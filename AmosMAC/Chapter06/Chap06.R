@@ -1,75 +1,75 @@
 # vers. 1.0
-### ----- ‘æ6Í ----- ###
+### ----- ç¬¬6ç«  ----- ###
 
 
 # Code06-01
-# ¬‘¾˜Y‚³‚ñ‚Ì–œˆø”íŠQƒf[ƒ^
+# å°å¤ªéƒŽã•ã‚“ã®ä¸‡å¼•è¢«å®³ãƒ‡ãƒ¼ã‚¿
 kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"))# "kotaro.csv"
 # kotaro <- read.csv("Chapter06_proj/kotaro.csv", colClasses = c("numeric","factor","Date","factor","factor"))# "kotaro.csv"
-# ŽžŒn—ñƒf[ƒ^‚ðˆµ‚¤‚Ì‚É•Ö—˜‚ÈƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹
+# æ™‚ç³»åˆ—ãƒ‡ãƒ¼ã‚¿ã‚’æ‰±ã†ã®ã«ä¾¿åˆ©ãªãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«
 # install.packages("xts")
 library("xts") 
 
-# ƒf[ƒ^‚É“ú•t‚ðÝ’è
+# ãƒ‡ãƒ¼ã‚¿ã«æ—¥ä»˜ã‚’è¨­å®š
 lostD <- seq(as.Date("2014-10-1"), as.Date("2015-5-30"), by = "days")
-lost <- xts(kotaro$”íŠQŠz, order.by = lostD, dateFormat = "Date")
+lost <- xts(kotaro$è¢«å®³é¡, order.by = lostD, dateFormat = "Date")
 
 
 
-## kotaro %>% group_by(—j“ú) %>% summarize (mean = mean (”íŠQŠz), sd  = sd (”íŠQŠz))# filter (—j“ú == "ŒŽ—j“ú")
+## kotaro %>% group_by(æ›œæ—¥) %>% summarize (mean = mean (è¢«å®³é¡), sd  = sd (è¢«å®³é¡))# filter (æ›œæ—¥ == "æœˆæ›œæ—¥")
 ## kotaro %>% summary #summary (kotaro)
 
-# •U‘¾‚ÌƒOƒ‰ƒt‚»‚Ì1
+# ä¿µå¤ªã®ã‚°ãƒ©ãƒ•ãã®1
 library(dplyr)
-lost %>% plot (type = "l", main = "–œˆø‚«”íŠQŠz")
-# plot(lost, type = "l", main = "–œˆø‚«”íŠQŠz")
+lost %>% plot (type = "l", main = "ä¸‡å¼•ãè¢«å®³é¡")
+# plot(lost, type = "l", main = "ä¸‡å¼•ãè¢«å®³é¡")
 
 
 
 # Code06-02
-# •U‘¾‚ÌƒOƒ‰ƒt‚»‚Ì2
-lost[1:31] %>% plot ( type = "l",main = "–œˆø‚«”íŠQŠz(10ŒŽj")#  plot(lost[1:30], type = "l",main = "–œˆø‚«”íŠQŠz(10ŒŽj")
+# ä¿µå¤ªã®ã‚°ãƒ©ãƒ•ãã®2
+lost[1:31] %>% plot ( type = "l",main = "ä¸‡å¼•ãè¢«å®³é¡(10æœˆï¼‰")#  plot(lost[1:30], type = "l",main = "ä¸‡å¼•ãè¢«å®³é¡(10æœˆï¼‰")
 
 # Code-06-03
-# ‚¢‚ÁŽq‚³‚ñ‚Ìì¬ƒOƒ‰ƒti2TŠÔ‚ÌŽüŠú«‚ðŠm”Fj
+# ã„ã£å­ã•ã‚“ã®ä½œæˆã‚°ãƒ©ãƒ•ï¼ˆ2é€±é–“ã®å‘¨æœŸæ€§ã‚’ç¢ºèªï¼‰
 lost %>% acf #acf(lost)#
 
 
 
 
 
-# ƒJƒŒƒ“ƒ_[ƒOƒ‰ƒt‚ð’Ç‰Á‚·‚é‚½‚ß‚É•K—v‚ÈƒpƒbƒP[ƒW
+# ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚°ãƒ©ãƒ•ã‚’è¿½åŠ ã™ã‚‹ãŸã‚ã«å¿…è¦ãªãƒ‘ãƒƒã‚±ãƒ¼ã‚¸
 # install.packages("openair")
-## ‚È‚¨ƒCƒ“ƒXƒg[ƒ‹Žž‚Éu —˜—p‚Å‚«‚éƒoƒCƒiƒŠ[”Å‚ª‚ ‚è‚Ü‚·‚ªƒ\[ƒX”Å‚ÍŒãŽÒ‚Å‚·:v‚Æq‚Ë‚ç‚ê‚é‚±‚Æ‚ª‚ ‚éBy‚©n‚Ì‚¢‚¸‚ê‚©‚ð‘I‚Ô‚æ‚¤‘£‚³‚ê‚é‚ªAn ‚Å–â‘è‚È‚¢
+## ãªãŠã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ™‚ã«ã€Œ åˆ©ç”¨ã§ãã‚‹ãƒã‚¤ãƒŠãƒªãƒ¼ç‰ˆãŒã‚ã‚Šã¾ã™ãŒã‚½ãƒ¼ã‚¹ç‰ˆã¯å¾Œè€…ã§ã™:ã€ã¨å°‹ã­ã‚‰ã‚Œã‚‹ã“ã¨ãŒã‚ã‚‹ã€‚yã‹nã®ã„ãšã‚Œã‹ã‚’é¸ã¶ã‚ˆã†ä¿ƒã•ã‚Œã‚‹ãŒã€n ã§å•é¡Œãªã„
 
 library(openair)
 
 
 # Code06-04
-# ‚¢‚ÁŽq‚³‚ñ‚Ìì¬ƒOƒ‰ƒtiƒJƒŒƒ“ƒ_[ƒOƒ‰ƒtj
-calendarPlot(kotaro, pollutant = "”íŠQŠz", year = c("2014"))#ó‹µ‚É‚æ‚Á‚Ä“ú–{Œê•”•ª‚ª•¶Žš‰»‚¯‚·‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·
+# ã„ã£å­ã•ã‚“ã®ä½œæˆã‚°ãƒ©ãƒ•ï¼ˆã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚°ãƒ©ãƒ•ï¼‰
+calendarPlot(kotaro, pollutant = "è¢«å®³é¡", year = c("2014"))#çŠ¶æ³ã«ã‚ˆã£ã¦æ—¥æœ¬èªžéƒ¨åˆ†ãŒæ–‡å­—åŒ–ã‘ã™ã‚‹ã“ã¨ãŒã‚ã‚Šã¾ã™
 
 
-calendarPlot(kotaro, pollutant = "”íŠQŠz", year = c("2015"))
+calendarPlot(kotaro, pollutant = "è¢«å®³é¡", year = c("2015"))
 # dev.off()
 
-# ƒƒWƒXƒeƒBƒbƒN‰ñ‹A•ªÍ
-# —j“ú‚ª“ú—j“ú‚©‚çŽn‚Ü‚é‚æ‚¤‚Éƒf[ƒ^‚Ì—ñ‚ðC³
-kotaro$—j“ú <- factor ( kotaro$—j“ú, levels = c( "“ú—j“ú", "ŒŽ—j“ú", "‰Î—j“ú", "…—j“ú", "–Ø—j“ú", "‹à—j“ú", "“y—j“ú" ))
-levels (kotaro$—j“ú )
+# ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯å›žå¸°åˆ†æž
+# æ›œæ—¥ãŒæ—¥æ›œæ—¥ã‹ã‚‰å§‹ã¾ã‚‹ã‚ˆã†ã«ãƒ‡ãƒ¼ã‚¿ã®åˆ—ã‚’ä¿®æ­£
+kotaro$æ›œæ—¥ <- factor ( kotaro$æ›œæ—¥, levels = c( "æ—¥æ›œæ—¥", "æœˆæ›œæ—¥", "ç«æ›œæ—¥", "æ°´æ›œæ—¥", "æœ¨æ›œæ—¥", "é‡‘æ›œæ—¥", "åœŸæ›œæ—¥" ))
+levels (kotaro$æ›œæ—¥ )
 
-kotaro.glm <- kotaro %>% glm (‘¹ŠQ ~ —j“ú + sŽ–“ú, data = ., family = binomial)
-# kotaro.glm <- glm (‘¹ŠQ ~ —j“ú + sŽ–“ú, data = kotaro, family = binomial)
+kotaro.glm <- kotaro %>% glm (æå®³ ~ æ›œæ—¥ + è¡Œäº‹æ—¥, data = ., family = binomial)
+# kotaro.glm <- glm (æå®³ ~ æ›œæ—¥ + è¡Œäº‹æ—¥, data = kotaro, family = binomial)
 
 kotaro.glm %>% summary
 # summary (kotaro.glm)
 
-# ƒIƒbƒY”ä‚ðo—Í
+# ã‚ªãƒƒã‚ºæ¯”ã‚’å‡ºåŠ›
 kotaro.glm$coefficients %>% exp %>% round(2)
 # round (exp(kotaro.glm$coefficients), 2)
 
 ###################################
-## R•t‘®ƒf[ƒ^‚ÅƒƒWƒXƒeƒBƒbƒN‰ñ‹A•ªÍ
+## Rä»˜å±žãƒ‡ãƒ¼ã‚¿ã§ãƒ­ã‚¸ã‚¹ãƒ†ã‚£ãƒƒã‚¯å›žå¸°åˆ†æž
 data(birthwt, package = "MASS")
 
 bw.glm <- birthwt %>% glm(low ~ age + lwt + race + smoke + ptl + ht + ui + ftv, data = .,family = binomial)

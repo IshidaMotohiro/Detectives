@@ -1,131 +1,131 @@
 # ver1.0
-### ----- ‘æ4Í ----- ###
+### ----- ç¬¬4ç«  ----- ###
 
 
-# ÷“c‚³‚ñ‚©‚ç—a‚©‚Á‚½ƒf[ƒ^‚ğA“V‰H‚³‚ñ‚ª®—‚µ‚½Œ‹‰Ê‚©‚çƒXƒ^[ƒg
+# æ¡œç”°ã•ã‚“ã‹ã‚‰é ã‹ã£ãŸãƒ‡ãƒ¼ã‚¿ã‚’ã€å¤©ç¾½ã•ã‚“ãŒæ•´ç†ã—ãŸçµæœã‹ã‚‰ã‚¹ã‚¿ãƒ¼ãƒˆ
 menus <- read.csv(file.choose(), stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
 # menus <- read.csv("Chapter04_proj/menus.csv", stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
-# 3—ñ‚ ‚éƒf[ƒ^‚ªA‚»‚ê‚¼‚ê«¿‚ª‚¿‚ª‚¤B•i–Ú‚ÍƒJƒeƒSƒŠ‚Å‚ ‚èA“ú•t‚Í“ú•tŒ^ƒf[ƒ^A”„ã‚Í”’l‚Å‚ ‚éB“Ç‚İ‚ŞÛ‚É‚±‚ê‚ğw’è‚µ‚Ä‚¢‚éi“Ç‚İ‚ñ‚¾Œã‚Åİ’è‚·‚é‚±‚Æ‚à‚Å‚«‚éj
+# 3åˆ—ã‚ã‚‹ãƒ‡ãƒ¼ã‚¿ãŒã€ãã‚Œãã‚Œæ€§è³ªãŒã¡ãŒã†ã€‚å“ç›®ã¯ã‚«ãƒ†ã‚´ãƒªã§ã‚ã‚Šã€æ—¥ä»˜ã¯æ—¥ä»˜å‹ãƒ‡ãƒ¼ã‚¿ã€å£²ä¸Šã¯æ•°å€¤ã§ã‚ã‚‹ã€‚èª­ã¿è¾¼ã‚€éš›ã«ã“ã‚Œã‚’æŒ‡å®šã—ã¦ã„ã‚‹ï¼ˆèª­ã¿è¾¼ã‚“ã å¾Œã§è¨­å®šã™ã‚‹ã“ã¨ã‚‚ã§ãã‚‹ï¼‰
 
-# ƒf[ƒ^‘€ì‚Ì€”õ
+# ãƒ‡ãƒ¼ã‚¿æ“ä½œã®æº–å‚™
 library(dplyr)
 
-# —ñ–¼‚ğŠm”F
-menus %>% names # names (menus)‚É“¯‚¶
+# åˆ—åã‚’ç¢ºèª
+menus %>% names # names (menus)ã«åŒã˜
 
-# –`“ª•”•ª‚ğŠm”F
-menus %>% head # head (menus)‚É“¯‚¶
+# å†’é ­éƒ¨åˆ†ã‚’ç¢ºèª
+menus %>% head # head (menus)ã«åŒã˜
 
 
-# Code 04-01 # Œn—ñƒvƒƒbƒg‚Ìì¬€”õ
+# Code 04-01 # æ™‚ç³»åˆ—ãƒ—ãƒ­ãƒƒãƒˆã®ä½œæˆæº–å‚™
 
 library(ggplot2)
 
-# ‚¨‚É‚¬‚è‚Ì”„ã‚ğ’Šo‚µ‚Ä
-onigiri <- menus %>%   filter (•i–Ú == "‚¨‚É‚¬‚è")  
-# Œn—ñƒOƒ‰ƒtiscale_x_date‚Åw’èj
-ggplot(onigiri, aes(“ú•t, ”„ã)) + geom_line() +  scale_x_date()  + ggtitle("‚¨‚É‚¬‚è‚Ì”„ã")
-# ƒpƒCƒvˆ—‚ğg‚¤‚È‚ç‚Î
-# onigiri %>% ggplot(aes(“ú•t, ”„ã)) + geom_line() +  scale_x_date()  + ggtitle("‚¨‚É‚¬‚è‚Ì”„ã")
+# ãŠã«ãã‚Šã®å£²ä¸Šã‚’æŠ½å‡ºã—ã¦
+onigiri <- menus %>%   filter (å“ç›® == "ãŠã«ãã‚Š")  
+# æ™‚ç³»åˆ—ã‚°ãƒ©ãƒ•ï¼ˆscale_x_dateã§æŒ‡å®šï¼‰
+ggplot(onigiri, aes(æ—¥ä»˜, å£²ä¸Š)) + geom_line() +  scale_x_date()  + ggtitle("ãŠã«ãã‚Šã®å£²ä¸Š")
+# ãƒ‘ã‚¤ãƒ—å‡¦ç†ã‚’ä½¿ã†ãªã‚‰ã°
+# onigiri %>% ggplot(aes(æ—¥ä»˜, å£²ä¸Š)) + geom_line() +  scale_x_date()  + ggtitle("ãŠã«ãã‚Šã®å£²ä¸Š")
 
 # Code04-02
-# ƒ`ƒƒ[ƒnƒ“‚Ì”„ã
-yakimesi <- menus %>% filter (•i–Ú == "ƒ`ƒƒ[ƒnƒ“")  
-# Œn—ñƒOƒ‰ƒt
-yakimesi %>% ggplot( aes(“ú•t, ”„ã)) + geom_line() +  scale_x_date()  + ggtitle("ƒ`ƒƒ[ƒnƒ“‚Ì”„ã")
+# ãƒãƒ£ãƒ¼ãƒãƒ³ã®å£²ä¸Š
+yakimesi <- menus %>% filter (å“ç›® == "ãƒãƒ£ãƒ¼ãƒãƒ³")  
+# æ™‚ç³»åˆ—ã‚°ãƒ©ãƒ•
+yakimesi %>% ggplot( aes(æ—¥ä»˜, å£²ä¸Š)) + geom_line() +  scale_x_date()  + ggtitle("ãƒãƒ£ãƒ¼ãƒãƒ³ã®å£²ä¸Š")
 
 
 # Code04-03
-# –Ë—Ş‚ğ’Šo
-noodles <- menus %>%  filter (•i–Ú %in% c( "ƒXƒpƒQƒbƒeƒB[", "ƒ\[ƒXÄ‚«‚»‚Î", "‚»‚Î", "‚¤‚Ç‚ñ", "‚¿‚á‚ñ‚Û‚ñ", "ƒ‰[ƒƒ“"))
-# Œn—ñƒOƒ‰ƒt
-noodles %>% ggplot(aes(“ú•t, ”„ã)) + geom_line()+ facet_wrap (~•i–Ú)  + ggtitle("–Ë—Ş‚Ì”„ã")
+# éººé¡ã‚’æŠ½å‡º
+noodles <- menus %>%  filter (å“ç›® %in% c( "ã‚¹ãƒ‘ã‚²ãƒƒãƒ†ã‚£ãƒ¼", "ã‚½ãƒ¼ã‚¹ç„¼ããã°", "ãã°", "ã†ã©ã‚“", "ã¡ã‚ƒã‚“ã½ã‚“", "ãƒ©ãƒ¼ãƒ¡ãƒ³"))
+# æ™‚ç³»åˆ—ã‚°ãƒ©ãƒ•
+noodles %>% ggplot(aes(æ—¥ä»˜, å£²ä¸Š)) + geom_line()+ facet_wrap (~å“ç›®)  + ggtitle("éººé¡ã®å£²ä¸Š")
 
 
 # Code-4-04
-# ‘ŠŠÖŒW”
-# ƒf[ƒ^®Œ`‚Ì‚½‚ß‚ÌƒpƒbƒP[ƒW‚ğ“±“ü
+# ç›¸é–¢ä¿‚æ•°
+# ãƒ‡ãƒ¼ã‚¿æ•´å½¢ã®ãŸã‚ã®ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’å°å…¥
 # install.packages("tidyr") 
 library(tidyr)
 
-# ‘ŠŠÖs—ñì¬‚Ì‚½‚ß‚Éƒf[ƒ^‚ğ®Œ`
-noodles2 <- menus %>%  filter (•i–Ú %in% c("‚¨‚É‚¬‚è", "‚İ‚»`", "ƒJƒŒ[", "‚¨’ƒ’Ğ‚¯","ƒXƒpƒQƒbƒeƒB[", "ƒ\[ƒXÄ‚«‚»‚Î", "‚»‚Î", "‚¤‚Ç‚ñ", "‚¿‚á‚ñ‚Û‚ñ", "ƒ‰[ƒƒ“")) %>%  spread (•i–Ú, ”„ã) 
+# ç›¸é–¢è¡Œåˆ—ä½œæˆã®ãŸã‚ã«ãƒ‡ãƒ¼ã‚¿ã‚’æ•´å½¢
+noodles2 <- menus %>%  filter (å“ç›® %in% c("ãŠã«ãã‚Š", "ã¿ãæ±", "ã‚«ãƒ¬ãƒ¼", "ãŠèŒ¶æ¼¬ã‘","ã‚¹ãƒ‘ã‚²ãƒƒãƒ†ã‚£ãƒ¼", "ã‚½ãƒ¼ã‚¹ç„¼ããã°", "ãã°", "ã†ã©ã‚“", "ã¡ã‚ƒã‚“ã½ã‚“", "ãƒ©ãƒ¼ãƒ¡ãƒ³")) %>%  spread (å“ç›®, å£²ä¸Š) 
 
-# –`“ª‚ğŠm”F‚µ
+# å†’é ­ã‚’ç¢ºèªã—
 head (noodles2)
-# ‘ŠŠÖŒW”‚ğ‹‚ß‚éi-1‚ÍA“ú•t•”•ª‚ğœ‚­w’èj
+# ç›¸é–¢ä¿‚æ•°ã‚’æ±‚ã‚ã‚‹ï¼ˆ-1ã¯ã€æ—¥ä»˜éƒ¨åˆ†ã‚’é™¤ãæŒ‡å®šï¼‰
 noodles2 [, -1] %>% cor #cor (noodles2 [, -1])
-## ˆÈ‰º‚ÍWindowsˆÈŠO‚ÌOS‚Å‚Í“®ì‚·‚é
-# noodles %>% select (-“ú•t) %>% cor
+## ä»¥ä¸‹ã¯Windowsä»¥å¤–ã®OSã§ã¯å‹•ä½œã™ã‚‹
+# noodles %>% select (-æ—¥ä»˜) %>% cor
 
-# U•z}s—ñ # 1—ñ–Ú‚Í“ú•t‚È‚Ì‚Å-1‚Æ‚¢‚¤w’è‚ÅœŠO
+# æ•£å¸ƒå›³è¡Œåˆ— # 1åˆ—ç›®ã¯æ—¥ä»˜ãªã®ã§-1ã¨ã„ã†æŒ‡å®šã§é™¤å¤–
 noodles2[, -1] %>% pairs #pairs ( noodles2[, -1] )
 
 # Code 04-5
-# ‚¤‚Ç‚ñ‚Æ‚¨‚É‚¬‚è‚ÌU•z}
-udon <- menus %>% filter (•i–Ú %in% c("‚¨‚É‚¬‚è", "‚¤‚Ç‚ñ")) %>% spread (•i–Ú, ”„ã)
-udon %>% ggplot(aes(‚¤‚Ç‚ñ, ‚¨‚É‚¬‚è)) + geom_point() + ggtitle("‚¤‚Ç‚ñ‚Æ‚¨‚É‚¬‚è‚ÌU•z}")
+# ã†ã©ã‚“ã¨ãŠã«ãã‚Šã®æ•£å¸ƒå›³
+udon <- menus %>% filter (å“ç›® %in% c("ãŠã«ãã‚Š", "ã†ã©ã‚“")) %>% spread (å“ç›®, å£²ä¸Š)
+udon %>% ggplot(aes(ã†ã©ã‚“, ãŠã«ãã‚Š)) + geom_point() + ggtitle("ã†ã©ã‚“ã¨ãŠã«ãã‚Šã®æ•£å¸ƒå›³")
 
 
 # Code 04-06
-# ‚¨‚É‚¬‚è‚Æ‹“û‚ÌU•z}
-milk <- menus %>%  filter (•i–Ú %in% c("‚¨‚É‚¬‚è", "‹“û")) %>%  spread (•i–Ú, ”„ã)
+# ãŠã«ãã‚Šã¨ç‰›ä¹³ã®æ•£å¸ƒå›³
+milk <- menus %>%  filter (å“ç›® %in% c("ãŠã«ãã‚Š", "ç‰›ä¹³")) %>%  spread (å“ç›®, å£²ä¸Š)
 
-milk %>% ggplot(aes(‚¨‚É‚¬‚è , ‹“û)) + geom_point(size = 2, color = "grey50")  + geom_smooth(method = "lm", se = FALSE) + ggtitle("‚¨‚É‚¬‚è‚Æ‹“û‚ÌU•z}")
+milk %>% ggplot(aes(ãŠã«ãã‚Š , ç‰›ä¹³)) + geom_point(size = 2, color = "grey50")  + geom_smooth(method = "lm", se = FALSE) + ggtitle("ãŠã«ãã‚Šã¨ç‰›ä¹³ã®æ•£å¸ƒå›³")
 
 # Code 04-07
-# ‹“û‚Ì”„ã
-milk2 <-menus %>% filter (•i–Ú == "‹“û")
-# Œn—ñƒOƒ‰ƒt
-milk2 %>% ggplot(aes(“ú•t, ”„ã)) + geom_line() +  scale_x_date()  + ggtitle("‹“û‚Ì”„ã")
+# ç‰›ä¹³ã®å£²ä¸Š
+milk2 <-menus %>% filter (å“ç›® == "ç‰›ä¹³")
+# æ™‚ç³»åˆ—ã‚°ãƒ©ãƒ•
+milk2 %>% ggplot(aes(æ—¥ä»˜, å£²ä¸Š)) + geom_line() +  scale_x_date()  + ggtitle("ç‰›ä¹³ã®å£²ä¸Š")
 
 
-# Code 04-08 ‘ŠŠÖ‚ª‚ ‚éH‚È‚¢H
-# g’·‚Æ”Nû‚Ìƒf[ƒ^
+# Code 04-08 ç›¸é–¢ãŒã‚ã‚‹ï¼Ÿãªã„ï¼Ÿ
+# èº«é•·ã¨å¹´åã®ãƒ‡ãƒ¼ã‚¿
 heights <- read.csv(file.choose())
 # heights <- read.csv("Chapter04_proj/heights.csv")
 
-# ‘ŠŠÖ‚Í¬‚³‚¢
+# ç›¸é–¢ã¯å°ã•ã„
 heights %>% cor # cor (heights)
 
-ggplot(heights, aes( g’·, ”Nû)) + geom_point() +  ggtitle("g’·‚Æ”Nû‚Ì‘ŠŠÖH")
-heights %>% ggplot(aes( g’·, ”Nû)) + geom_point() +  ggtitle("g’·‚Æ”Nû‚Ì‘ŠŠÖH")
+ggplot(heights, aes( èº«é•·, å¹´å)) + geom_point() +  ggtitle("èº«é•·ã¨å¹´åã®ç›¸é–¢ï¼Ÿ")
+heights %>% ggplot(aes( èº«é•·, å¹´å)) + geom_point() +  ggtitle("èº«é•·ã¨å¹´åã®ç›¸é–¢ï¼Ÿ")
 
 
 # Code-04-09
-# –³‘ŠŠÖ‚Èƒf[ƒ^
+# ç„¡ç›¸é–¢ãªãƒ‡ãƒ¼ã‚¿
 xy <- data.frame (X = -10:10, Y =  (-10:10)^2)
-xy %>% ggplot(aes (x = X, y = Y)) + geom_point(size  =2 )+ ggtitle("‘ŠŠÖ‚ª‚ ‚è‚»‚¤‚¾‚ªH")
-# ggplot(xy, aes (x = X, y = Y)) + geom_point(size  =2 )+ ggtitle("‘ŠŠÖ‚ª‚ ‚è‚»‚¤‚¾‚ªH")
+xy %>% ggplot(aes (x = X, y = Y)) + geom_point(size  =2 )+ ggtitle("ç›¸é–¢ãŒã‚ã‚Šãã†ã ãŒï¼Ÿ")
+# ggplot(xy, aes (x = X, y = Y)) + geom_point(size  =2 )+ ggtitle("ç›¸é–¢ãŒã‚ã‚Šãã†ã ãŒï¼Ÿ")
 #
 
-# ‰ñ‹A•ªÍ
-# ƒAƒCƒXƒNƒŠ[ƒ€‚Ì”„‚èã‚°ƒf[ƒ^‚ğicecream‚Æ‚µ‚Ä“Ç‚İ‚İ
+# å›å¸°åˆ†æ
+# ã‚¢ã‚¤ã‚¹ã‚¯ãƒªãƒ¼ãƒ ã®å£²ã‚Šä¸Šã’ãƒ‡ãƒ¼ã‚¿ã‚’icecreamã¨ã—ã¦èª­ã¿è¾¼ã¿
 # Code04-09
 icecream <- read.csv(file.choose())
 # icecream <- read.csv("Chapter04_proj/icecream.csv")
 icecream %>% head #head (icecream)
-# ‹C‰·‚Æ”Ì”„”‚ÌU•z}‚ğ•`‚­
-icecream %>% ggplot(aes(‹C‰·,  ”Ì”„”)) + geom_point(size = 2)
-# ggplot(icecream, aes(‹C‰·,  ”Ì”„”)) + geom_point(size = 2)
+# æ°—æ¸©ã¨è²©å£²æ•°ã®æ•£å¸ƒå›³ã‚’æã
+icecream %>% ggplot(aes(æ°—æ¸©,  è²©å£²æ•°)) + geom_point(size = 2)
+# ggplot(icecream, aes(æ°—æ¸©,  è²©å£²æ•°)) + geom_point(size = 2)
 
-# ‘ŠŠÖŒW”‚ğ‹‚ß‚é
-icecream %>% select (”Ì”„” , ‹C‰· ) %>% cor
+# ç›¸é–¢ä¿‚æ•°ã‚’æ±‚ã‚ã‚‹
+icecream %>% select (è²©å£²æ•° , æ°—æ¸© ) %>% cor
 
-# lmŠÖ”‚ÅŒX‚«‚ÆØ•Ğ‚ğŠm”F
-lm(”Ì”„” ~ ‹C‰·, data = icecream)
-# ƒpƒCƒvˆ—‚ğg‚¦‚Î
-# icecream %>% lm(”Ì”„” ~ ‹C‰·, data = .)
+# lmé–¢æ•°ã§å‚¾ãã¨åˆ‡ç‰‡ã‚’ç¢ºèª
+lm(è²©å£²æ•° ~ æ°—æ¸©, data = icecream)
+# ãƒ‘ã‚¤ãƒ—å‡¦ç†ã‚’ä½¿ãˆã°
+# icecream %>% lm(è²©å£²æ•° ~ æ°—æ¸©, data = .)
 
-# ‰ñ‹A’¼ü‚ğ‰Á‚¦‚½U•z}‚ğ•`‚­
-ggplot(icecream, aes(‹C‰·,  ”Ì”„”)) + geom_point(size = 2) + geom_smooth(method = "lm", se = FALSE)
-# ƒpƒCƒvˆ—‚ğg‚¤‚È‚ç‚Î
-# icecream %>% ggplot(aes(‹C‰·,  ”Ì”„”)) + geom_point(size = 2) + geom_smooth(method = "lm", se = FALSE)
+# å›å¸°ç›´ç·šã‚’åŠ ãˆãŸæ•£å¸ƒå›³ã‚’æã
+ggplot(icecream, aes(æ°—æ¸©,  è²©å£²æ•°)) + geom_point(size = 2) + geom_smooth(method = "lm", se = FALSE)
+# ãƒ‘ã‚¤ãƒ—å‡¦ç†ã‚’ä½¿ã†ãªã‚‰ã°
+# icecream %>% ggplot(aes(æ°—æ¸©,  è²©å£²æ•°)) + geom_point(size = 2) + geom_smooth(method = "lm", se = FALSE)
 
 
-# ‹A–³‰¼àuŒX‚«‚Í0v‚ğŒŸ’è‚µ‚½Œ‹‰Ê‚ÆŒˆ’èŒW”‚ğ’²‚×‚é
-summary (lm(”Ì”„” ~ ‹C‰·, data = icecream))
-# ƒpƒCƒvˆ—‚ğg‚¤‚È‚ç‚Î
-# icecream %>% lm(”Ì”„” ~ ‹C‰·, data = .) %>% summary
+# å¸°ç„¡ä»®èª¬ã€Œå‚¾ãã¯0ã€ã‚’æ¤œå®šã—ãŸçµæœã¨æ±ºå®šä¿‚æ•°ã‚’èª¿ã¹ã‚‹
+summary (lm(è²©å£²æ•° ~ æ°—æ¸©, data = icecream))
+# ãƒ‘ã‚¤ãƒ—å‡¦ç†ã‚’ä½¿ã†ãªã‚‰ã°
+# icecream %>% lm(è²©å£²æ•° ~ æ°—æ¸©, data = .) %>% summary
 # 
 

@@ -1,150 +1,150 @@
 # ver1.0
-###----- ‘æ5Í  -----###
-## RMeCab‚ðƒCƒ“ƒXƒg[ƒ‹A‚½‚¾‚µAŽ–‘O‚ÉMeCab‚ÌƒCƒ“ƒXƒg[ƒ‹‚ª•K—v
-## ‚±‚± https://sites.google.com/site/rmecab/home/install  ‚ðŽQÆ‚Ì‚¤‚¦AƒCƒ“ƒXƒg[ƒ‹‚·‚é
+###----- ç¬¬5ç«   -----###
+## RMeCabã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã€ãŸã ã—ã€äº‹å‰ã«MeCabã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãŒå¿…è¦
+## ã“ã“ https://sites.google.com/site/rmecab/home/install  ã‚’å‚ç…§ã®ã†ãˆã€ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹
 
 # install.packages("RMeCab", repos = "http://rmecab.jp/R")
 library(RMeCab)
-# w‘–‚êƒƒƒXx‚ðŒ`‘Ô‘f‰ðÍ‚É‚©‚¯A–¼ŽŒAŒ`—eŽŒA“®ŽŒ‚ð’Šo
-m <- NgramDF("merosu.txt", type = 1, pos = c("–¼ŽŒ","Œ`—eŽŒ", "“®ŽŒ"))
+# ã€Žèµ°ã‚Œãƒ¡ãƒ­ã‚¹ã€ã‚’å½¢æ…‹ç´ è§£æžã«ã‹ã‘ã€åè©žã€å½¢å®¹è©žã€å‹•è©žã‚’æŠ½å‡º
+m <- NgramDF("merosu.txt", type = 1, pos = c("åè©ž","å½¢å®¹è©ž", "å‹•è©ž"))
 
 library(dplyr)
-nrow (m) #ƒpƒCƒvˆ—‚È‚ç‚Î m %>% nrow #
-# ‘å‚«‚Èƒf[ƒ^‚È‚Ì‚Å–`“ª‚¾‚¯‚ðŠm”F
+nrow (m) #ãƒ‘ã‚¤ãƒ—å‡¦ç†ãªã‚‰ã° m %>% nrow #
+# å¤§ããªãƒ‡ãƒ¼ã‚¿ãªã®ã§å†’é ­ã ã‘ã‚’ç¢ºèª
 head (m) # m %>% head #head (m)
 
 # Code05-01
-# ‚ ‚é’ö“xŽg‚í‚ê‚Ä‚¢‚éŒê‚Éi‚èž‚Þi‚±‚±‚Å‚Í2‰ñ‚æ‚è‘½‚­Žg‚í‚ê‚Ä‚¢‚éŒêj
+# ã‚ã‚‹ç¨‹åº¦ä½¿ã‚ã‚Œã¦ã„ã‚‹èªžã«çµžã‚Šè¾¼ã‚€ï¼ˆã“ã“ã§ã¯2å›žã‚ˆã‚Šå¤šãä½¿ã‚ã‚Œã¦ã„ã‚‹èªžï¼‰
 m.df <- m %>% filter(Freq > 2)
 
 
-# ƒlƒbƒgƒ[ƒNƒOƒ‰ƒt‚ð•`‚­ƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä“Ç‚Ýž‚Þ
+# ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚°ãƒ©ãƒ•ã‚’æããƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦èª­ã¿è¾¼ã‚€
 # install.packages("igraph")
 library(igraph) 
 
-# Œê‚Ì‚Â‚È‚ª‚è‚ðƒlƒbƒgƒ[ƒN‰»
+# èªžã®ã¤ãªãŒã‚Šã‚’ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯åŒ–
 m.g <- graph.data.frame(m.df)
 E(m.g)$weight <- m.df[,3] #
 
-# Mac‚Ìê‡AXquartz‚ÌƒCƒ“ƒXƒg[ƒ‹‚ª•K—v http://xquartz.macosforge.org/landing/
+# Macã®å ´åˆã€Xquartzã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ãŒå¿…è¦ http://xquartz.macosforge.org/landing/
 
 tkplot(m.g, vertex.label =V(m.g)$name, edge.label =E(m.g)$weight , vertex.size = 23, vertex.color = "SkyBlue")
-# ‚È‚¨¶¬‚³‚ê‚½ƒlƒbƒgƒ[ƒNEƒOƒ‰ƒtã‚Å‚Í“_‚âü‚ðƒNƒŠƒbƒN‚µ‚ÄˆÚ“®‚³‚¹‚é‚±‚Æ‚ª‚Å‚«‚éB‚»‚Ì‘¼‚É‚à•`‰æ—p‚ÌƒIƒvƒVƒ‡ƒ“‚ªƒƒjƒ…[‚©‚ç‘I‚×‚é‚Ì‚ÅAŽŽ‚µ‚Ä‚Ý‚é‚Æ‚¢‚¢‚¾‚ë‚¤B
+# ãªãŠç”Ÿæˆã•ã‚ŒãŸãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒ»ã‚°ãƒ©ãƒ•ä¸Šã§ã¯ç‚¹ã‚„ç·šã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ç§»å‹•ã•ã›ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚ãã®ä»–ã«ã‚‚æç”»ç”¨ã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ãŒãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‹ã‚‰é¸ã¹ã‚‹ã®ã§ã€è©¦ã—ã¦ã¿ã‚‹ã¨ã„ã„ã ã‚ã†ã€‚
 
 
-# X‰¨ŠO‚Æ‰Ä–ÚŸùÎ
+# æ£®é´Žå¤–ã¨å¤ç›®æ¼±çŸ³
 # Code05-02
 m <- docNgram ("bungo", type = 0) 
 
-# —ñ–¼‚ªƒfƒtƒHƒ‹ƒg‚¾‚Æƒtƒ@ƒCƒ‹–¼‚È‚Ì‚ÅA‚í‚©‚è‚â‚·‚­•ÏX
-colnames (m) <- c("‰¨ŠO1","‰¨ŠO2","‰¨ŠO3","‰¨ŠO4","ŸùÎ1","ŸùÎ2","ŸùÎ3","ŸùÎ4")
-# ‚¿‚È‚Ý‚ÉƒpƒCƒv‚ðŽg‚¤‚È‚ç‚ÎˆÈ‰º‚Ì‚æ‚¤‚É‚·‚éi‚½‚¾‚µWindows‚¾‚Æ•¶ŽšƒR[ƒh‚Ì“Á«‚Ì‚½‚ßA‚¤‚Ü‚­ŽÀs‚Å‚«‚È‚¢j
+# åˆ—åãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã ã¨ãƒ•ã‚¡ã‚¤ãƒ«åãªã®ã§ã€ã‚ã‹ã‚Šã‚„ã™ãå¤‰æ›´
+colnames (m) <- c("é´Žå¤–1","é´Žå¤–2","é´Žå¤–3","é´Žå¤–4","æ¼±çŸ³1","æ¼±çŸ³2","æ¼±çŸ³3","æ¼±çŸ³4")
+# ã¡ãªã¿ã«ãƒ‘ã‚¤ãƒ—ã‚’ä½¿ã†ãªã‚‰ã°ä»¥ä¸‹ã®ã‚ˆã†ã«ã™ã‚‹ï¼ˆãŸã ã—Windowsã ã¨æ–‡å­—ã‚³ãƒ¼ãƒ‰ã®ç‰¹æ€§ã®ãŸã‚ã€ã†ã¾ãå®Ÿè¡Œã§ããªã„ï¼‰
 # library(dplyr)
 #m %>% rename_ (.dots = setNames(m), 
-#              c("‰¨ŠO1","‰¨ŠO2","‰¨ŠO3","‰¨ŠO4",
-#                "ŸùÎ1","ŸùÎ2","ŸùÎ3","ŸùÎ4"))
+#              c("é´Žå¤–1","é´Žå¤–2","é´Žå¤–3","é´Žå¤–4",
+#                "æ¼±çŸ³1","æ¼±çŸ³2","æ¼±çŸ³3","æ¼±çŸ³4"))
 
-# Œ»’iŠK‚Å m ‚É‚Í‘å—Ê‚Ìî•ñ‚ª‚ ‚éB‚±‚±‚©‚ç•ŽŒ‚Æ“Ç“_‚Ì8‚Â‚Ì‘g‚Ý‡‚í‚¹‚Éi‚é
-m <- m [ rownames(m) %in% c("[‚Æ-A]", "[‚Ä-A]", "[‚Í-A]", "[‚ª-A]", "[‚Å-A]",  "[‚É-A]",  "[‚ç-A]",  "[‚à-A]" ) ,  ]
+# ç¾æ®µéšŽã§ m ã«ã¯å¤§é‡ã®æƒ…å ±ãŒã‚ã‚‹ã€‚ã“ã“ã‹ã‚‰åŠ©è©žã¨èª­ç‚¹ã®8ã¤ã®çµ„ã¿åˆã‚ã›ã«çµžã‚‹
+m <- m [ rownames(m) %in% c("[ã¨-ã€]", "[ã¦-ã€]", "[ã¯-ã€]", "[ãŒ-ã€]", "[ã§-ã€]",  "[ã«-ã€]",  "[ã‚‰-ã€]",  "[ã‚‚-ã€]" ) ,  ]
 
 
-# 8s8—ñ‚Ìƒf[ƒ^‚ðŠm”F
+# 8è¡Œ8åˆ—ã®ãƒ‡ãƒ¼ã‚¿ã‚’ç¢ºèª
 m 
 
 
 # Code05-03
-# u‚Åv‚Æu‚ªv‚ðŽU•z}‚Å•`‚¢‚Ä‚Ý‚é
-dega <- data.frame(‚ª = m[1,] ,‚Å = m[3,],ì‰Æ=c("‰¨ŠO","‰¨ŠO","‰¨ŠO","‰¨ŠO","ŸùÎ","ŸùÎ","ŸùÎ","ŸùÎ" ))
+# ã€Œã§ã€ã¨ã€ŒãŒã€ã‚’æ•£å¸ƒå›³ã§æã„ã¦ã¿ã‚‹
+dega <- data.frame(ãŒ = m[1,] ,ã§ = m[3,],ä½œå®¶=c("é´Žå¤–","é´Žå¤–","é´Žå¤–","é´Žå¤–","æ¼±çŸ³","æ¼±çŸ³","æ¼±çŸ³","æ¼±çŸ³" ))
 
 dega
 
 library(ggplot2)
-dega %>% ggplot(aes(x = ‚ª, y = ‚Å , group=ì‰Æ ) ) + geom_point(aes(shape = ì‰Æ), size = 6) + scale_shape(solid = FALSE)
-# ggplot(dega, aes(x = ‚ª, y = ‚Å , group=ì‰Æ ) ) + geom_point(aes(shape = ì‰Æ), size = 6) + scale_shape(solid = FALSE)
+dega %>% ggplot(aes(x = ãŒ, y = ã§ , group=ä½œå®¶ ) ) + geom_point(aes(shape = ä½œå®¶), size = 6) + scale_shape(solid = FALSE)
+# ggplot(dega, aes(x = ãŒ, y = ã§ , group=ä½œå®¶ ) ) + geom_point(aes(shape = ä½œå®¶), size = 6) + scale_shape(solid = FALSE)
 
 # Code05-04
-# ‘¾É‚Ì4ì•i‚ð‰Á‚¦‚½ƒtƒHƒ‹ƒ_‚ð‰ðÍ‚·‚é
+# å¤ªå®°ã®4ä½œå“ã‚’åŠ ãˆãŸãƒ•ã‚©ãƒ«ãƒ€ã‚’è§£æžã™ã‚‹
 m2 <- docNgram ("dazai", type = 0) 
-colnames(m2) <- c("‘¾É1","‘¾É2","‘¾É3","‘¾É4",
-                  "‰¨ŠO1","‰¨ŠO2","‰¨ŠO3","‰¨ŠO4",
-                  "ŸùÎ1","ŸùÎ2","ŸùÎ3","ŸùÎ4")
+colnames(m2) <- c("å¤ªå®°1","å¤ªå®°2","å¤ªå®°3","å¤ªå®°4",
+                  "é´Žå¤–1","é´Žå¤–2","é´Žå¤–3","é´Žå¤–4",
+                  "æ¼±çŸ³1","æ¼±çŸ³2","æ¼±çŸ³3","æ¼±çŸ³4")
 
-m2 <- m2 [ rownames(m2) %in% c("[‚Æ-A]", "[‚Ä-A]", "[‚Í-A]", "[‚ª-A]", "[‚Å-A]",  "[‚É-A]",  "[‚ç-A]",  "[‚à-A]" ) ,  ]
+m2 <- m2 [ rownames(m2) %in% c("[ã¨-ã€]", "[ã¦-ã€]", "[ã¯-ã€]", "[ãŒ-ã€]", "[ã§-ã€]",  "[ã«-ã€]",  "[ã‚‰-ã€]",  "[ã‚‚-ã€]" ) ,  ]
 
 
-dega2 <- data.frame(‚ª = m2[1,] ,‚Å = m2[3,],ì‰Æ=c("‘¾É","‘¾É","‘¾É","‘¾É",
-                                                "‰¨ŠO","‰¨ŠO","‰¨ŠO","‰¨ŠO",
-                                                "ŸùÎ","ŸùÎ","ŸùÎ","ŸùÎ"))
+dega2 <- data.frame(ãŒ = m2[1,] ,ã§ = m2[3,],ä½œå®¶=c("å¤ªå®°","å¤ªå®°","å¤ªå®°","å¤ªå®°",
+                                                "é´Žå¤–","é´Žå¤–","é´Žå¤–","é´Žå¤–",
+                                                "æ¼±çŸ³","æ¼±çŸ³","æ¼±çŸ³","æ¼±çŸ³"))
 dega2
 
-dega2 %>% ggplot(aes(x = ‚ª, y = ‚Å , group=ì‰Æ ) ) + geom_point(aes(shape = ì‰Æ), size = 6) + scale_shape(solid = FALSE)
-# ggplot(dega2, aes(x = ‚ª, y = ‚Å , group=ì‰Æ ) ) + geom_point(aes(shape = ì‰Æ), size = 6) + scale_shape(solid = FALSE)
+dega2 %>% ggplot(aes(x = ãŒ, y = ã§ , group=ä½œå®¶ ) ) + geom_point(aes(shape = ä½œå®¶), size = 6) + scale_shape(solid = FALSE)
+# ggplot(dega2, aes(x = ãŒ, y = ã§ , group=ä½œå®¶ ) ) + geom_point(aes(shape = ä½œå®¶), size = 6) + scale_shape(solid = FALSE)
 
 # Code05-05
-# Žå¬•ª•ªÍ
-# ƒpƒCƒv‚Ì“r’†‚ÉtŠÖ”‚ð‚Í‚³‚ñ‚ÅAƒf[ƒ^‚ð‰¡‚É“|‚·i‚Â‚Ü‚ès‚Æ—ñ‚ð“ü‚ê‘Ö‚¦‚éj
+# ä¸»æˆåˆ†åˆ†æž
+# ãƒ‘ã‚¤ãƒ—ã®é€”ä¸­ã«té–¢æ•°ã‚’ã¯ã•ã‚“ã§ã€ãƒ‡ãƒ¼ã‚¿ã‚’æ¨ªã«å€’ã™ï¼ˆã¤ã¾ã‚Šè¡Œã¨åˆ—ã‚’å…¥ã‚Œæ›¿ãˆã‚‹ï¼‰
 m2.pca <- m2 %>% t %>% prcomp # m2.pca <- prcomp(t(m2))
 
 # Code05-06
-# Žå¬•ª‚ðŠm”F
+# ä¸»æˆåˆ†ã‚’ç¢ºèª
 round (m2.pca[[2]], 2) 
 
 
 ############################
 
-## ƒNƒŒ[ƒ}[‚ÌŽèŽ†‚ÆƒuƒƒO‹LŽ–ƒf[ƒ^
+## ã‚¯ãƒ¬ãƒ¼ãƒžãƒ¼ã®æ‰‹ç´™ã¨ãƒ–ãƒ­ã‚°è¨˜äº‹ãƒ‡ãƒ¼ã‚¿
 kiji <- read.csv(file.choose(), row.name = 1)
 # kiji <- read.csv("Chapter05_proj/mb.csv", row.name = 1)
 
 kiji
 
-## Žå¬•ª•ªÍ
+## ä¸»æˆåˆ†åˆ†æž
 blog <- kiji %>% prcomp # blog <- prcomp(mail)
 
 blog %>% biplot # biplot(blog, cex = 1.2)
 
 
-## ŒûƒRƒ~•ªÍ
+## å£ã‚³ãƒŸåˆ†æž
 
 
 # Code05-07
-# ƒCƒ“ƒ^[ƒlƒbƒgã‚ÌƒTƒCƒg‚©‚çƒy[ƒW‚ð’Šo‚·‚érvestƒpƒbƒP[ƒW‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä—˜—p‚·‚é
+# ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒƒãƒˆä¸Šã®ã‚µã‚¤ãƒˆã‹ã‚‰ãƒšãƒ¼ã‚¸ã‚’æŠ½å‡ºã™ã‚‹rvestãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã¦åˆ©ç”¨ã™ã‚‹
 # install.packages("rvest") 
 library(rvest)
 library(dplyr)
 
-# Wiki‚Ì‰ÔŽD‚Ì‚Ø[‚¶‚ðŽæ“¾Bƒf[ƒ^Žæ“¾‚É”•b‚©‚©‚é
+# Wikiã®èŠ±æœ­ã®ãºãƒ¼ã˜ã‚’å–å¾—ã€‚ãƒ‡ãƒ¼ã‚¿å–å¾—ã«æ•°ç§’ã‹ã‹ã‚‹
 wiki <- html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
 hanahuda <- wiki %>% html_nodes("table") %>% .[[3]] %>% html_nodes("td") %>% html_text() 
 dim(hanahuda) <- c(6,12)
 hanahuda %>% t %>% as.table #as.table (t(hanahuda))
 
-#‚È‚¨Mac‚ð—˜—p‚µ‚Ä‚¢‚éê‡‚ÍAˆÈ‰º‚Ì‚æ‚¤‚ÉŽÀs‚Å‚«‚éi“ú–{Œê•¶ŽšƒR[ƒh‚ÌŠÖŒW‚ÅAŽc”O‚È‚ª‚çWindows‚¾‚Æ‚¤‚Ü‚­“®ì‚µ‚È‚¢‚Ì‚Å’ˆÓj
+#ãªãŠMacã‚’åˆ©ç”¨ã—ã¦ã„ã‚‹å ´åˆã¯ã€ä»¥ä¸‹ã®ã‚ˆã†ã«å®Ÿè¡Œã§ãã‚‹ï¼ˆæ—¥æœ¬èªžæ–‡å­—ã‚³ãƒ¼ãƒ‰ã®é–¢ä¿‚ã§ã€æ®‹å¿µãªãŒã‚‰Windowsã ã¨ã†ã¾ãå‹•ä½œã—ãªã„ã®ã§æ³¨æ„ï¼‰
 # html <- html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
 # hana <- html_table(html_nodes(html, "table")[[3]])
 # hana
 
 
 # Code05-08
-# ŒûƒRƒ~•ªÍ
+# å£ã‚³ãƒŸåˆ†æž
 kutikomi <- read.csv("kutikomi.csv", row.name = 1)
 kutikomi %>% head 
 
 
 # Code05-09
-## ƒfƒ“ƒhƒƒOƒ‰ƒ€
+## ãƒ‡ãƒ³ãƒ‰ãƒ­ã‚°ãƒ©ãƒ 
 kuti.clus <- kutikomi %>% t %>% dist %>% hclust 
 # kuti.clus <- hclust(dist(t(kutikomi)))
 kuti.clus %>% plot 
 
-# ƒfƒ“ƒhƒƒOƒ‰ƒ€ê—pƒpƒbƒP[ƒW‚ðŽg‚Á‚Ä‚Ý‚é
+# ãƒ‡ãƒ³ãƒ‰ãƒ­ã‚°ãƒ©ãƒ å°‚ç”¨ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã‚’ä½¿ã£ã¦ã¿ã‚‹
 #install.packages("ggdendro") 
 #library("ggdendro") 
-#kuti.clus %>% ggdendrogram(rotate = FALSE,size = 20) + labs(title= "ŒûƒRƒ~‚ÌƒNƒ‰ƒXƒ^[") + #xlab ("ƒNƒ‰ƒXƒ^[") + ylab( "—ÞŽ—“x") + theme_bw(base_size = 18)
+#kuti.clus %>% ggdendrogram(rotate = FALSE,size = 20) + labs(title= "å£ã‚³ãƒŸã®ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¼") + #xlab ("ã‚¯ãƒ©ã‚¹ã‚¿ãƒ¼") + ylab( "é¡žä¼¼åº¦") + theme_bw(base_size = 18)
 
 
 # Code05-10
-## ‘Î‰ž•ªÍ
+## å¯¾å¿œåˆ†æž
 kuti.cor <- kutikomi %>% MASS::corresp(nf = 2)
 # kuti.cor <- MASS::corresp(kutikomi, nf = 2)
 
@@ -152,10 +152,10 @@ kuti.cor %>% biplot(cex = 1.6)
 
 
 
-# ƒRƒŒƒXƒ|ƒ“ƒfƒ“ƒX•ªÍ‚Ì—á
+# ã‚³ãƒ¬ã‚¹ãƒãƒ³ãƒ‡ãƒ³ã‚¹åˆ†æžã®ä¾‹
 HE <- HairEyeColor[,,2]
 
-dimnames(HE) <- list (”¯ =c("•","’ƒ","Ô","‹à"), Šá=c("’ƒ","Â","ŒI","—Î"))
+dimnames(HE) <- list (é«ª =c("é»’","èŒ¶","èµ¤","é‡‘"), çœ¼=c("èŒ¶","é’","æ —","ç·‘"))
 HE
 
 HEca <- HE %>% MASS::corresp(nf = 2)

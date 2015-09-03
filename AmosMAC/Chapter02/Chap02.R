@@ -1,68 +1,68 @@
 # vers. 1.0
-### ----- ��2�� -----###
+### ----- 第2章 -----###
 
-# RStudio�̊�b
+# RStudioの基礎
 1 + 2
 2 * 3 * 4
 8 / 4 / 2
 
 
-#�@�P����P�O�܂ł̐���
+#　１から１０までの整数
 1:10
-# ���̍��v
+# その合計
 sum (1:10)
-# ���̕���
+# その平均
 mean (1:10)
 
 
-# �܂��̓f�[�^�̓��͂���# �_�C�A���O����t�@�C����I��
+# まずはデータの入力から# ダイアログからファイルを選ぶ
  breads <- read.csv (file.choose()) 
-## �t�@�C�������w�肵�Ă��悢�B�������t�@�C���̈ʒu�w��ɒ���
+## ファイル名を指定してもよい。ただしファイルの位置指定に注意
 # breads <- read.csv ("Chapter02_proj/breads.csv")
 ## breads <- read.csv (file.choose())
-# �`������������\��
+# 冒頭部分だけを表示
 head (breads)
 
-# ���ϒl
+# 平均値
 mean (breads$weight)
-# �W���΍�
+# 標準偏差
 sd (breads$weight)
 
 
-# �W���΍��̈Ӗ�
-# �q�X�g�O������`���Ă݂�
+# 標準偏差の意味
+# ヒストグラムを描いてみる
 library (ggplot2)
-ggplot (breads, aes(x = weight)) + geom_histogram(binwidth = 10, fill = "steelblue", colour="black",  alpha = 0.5) + xlab("�H�p���̏d��") + ylab ("��") + ggtitle("�H�p���̃q�X�g�O����")
+ggplot (breads, aes(x = weight)) + geom_histogram(binwidth = 10, fill = "steelblue", colour="black",  alpha = 0.5) + xlab("食パンの重さ") + ylab ("個数") + ggtitle("食パンのヒストグラム")
 
-## ���K���z (��������̊��Ғl�̗�)
+## 正規分布 (さいころの期待値の例)
 mean (sample (1:6, 10,replace = TRUE))
 
 
-## �T�C�R����100��U��V�~�����[�V������100000��J��Ԃ�
-# 10����̎��s
+## サイコロを100回振るシミュレーションを100000回繰り返す
+# 10万回の試行
 res <- replicate(100000,  mean (sample(1:6, 100, replace = TRUE)))
 
 
-# �V���v���ȃq�X�g�O����
+# シンプルなヒストグラム
 hist(res)
 
-# ���������Â����O���t�𐶐�
+# もう少し凝ったグラフを生成
 library(ggplot2)
-# ���̂��߂Ƀf�[�^�𐮌`�@
-saikoro <- data.frame(�T�C�R�� = res)
+# そのためにデータを整形　
+saikoro <- data.frame(サイコロ = res)
 head (saikoro)
 
 
-ggplot(saikoro, aes (x = �T�C�R��)) + geom_histogram(aes(y = ..density..),binwidth = .1, fill = "steelblue", colour="black",  alpha = 0.5) + xlab("���Ғl") + ylab ("") + ggtitle("�T�C�R���̕��ϒl�̕��ϒl") +   stat_function(geom="line", fun = dnorm, args=list(mean = mean (saikoro$�T�C�R��), sd = sd (saikoro$�T�C�R��)))
-##  +stat_function�ȍ~�̕������A���K���z�̒ޏ��^�̋Ȑ���ǉ�����R�[�h
+ggplot(saikoro, aes (x = サイコロ)) + geom_histogram(aes(y = ..density..),binwidth = .1, fill = "steelblue", colour="black",  alpha = 0.5) + xlab("期待値") + ylab ("") + ggtitle("サイコロの平均値の平均値") +   stat_function(geom="line", fun = dnorm, args=list(mean = mean (saikoro$サイコロ), sd = sd (saikoro$サイコロ)))
+##  +stat_function以降の部分が、正規分布の釣鐘型の曲線を追加するコード
 
-# �H�p���f�[�^�̓ǂݍ���
+# 食パンデータの読み込み
 breads <- read.csv (file.choose())# "Chapter02_proj/breads.csv"
-# �q�X�g�O�����Ɛ��K���z�𓖂Ă͂߂��Ȑ�
-ggplot (breads, aes(x = weight))+ geom_histogram(aes(y = ..density..),binwidth = 10, fill = "steelblue", colour="black",  alpha = 0.5) + xlim(360, 430)  + xlab("�H�p���̏d��") + ylab ("��") + ggtitle("�H�p���̃q�X�g�O����") + stat_function(geom="line", fun = dnorm, args=list(mean = mean (breads$weight), sd = sd (breads$weight))) 
-##  +stat_function�ȍ~�̕������A���K���z�̒ޏ��^�̋Ȑ���ǉ�����R�[�h
+# ヒストグラムと正規分布を当てはめた曲線
+ggplot (breads, aes(x = weight))+ geom_histogram(aes(y = ..density..),binwidth = 10, fill = "steelblue", colour="black",  alpha = 0.5) + xlim(360, 430)  + xlab("食パンの重さ") + ylab ("個数") + ggtitle("食パンのヒストグラム") + stat_function(geom="line", fun = dnorm, args=list(mean = mean (breads$weight), sd = sd (breads$weight))) 
+##  +stat_function以降の部分が、正規分布の釣鐘型の曲線を追加するコード
 
-# ���ϒl�̍��̌���
+# 平均値の差の検定
 t.test (breads$weight, mu = 400)
 
 
