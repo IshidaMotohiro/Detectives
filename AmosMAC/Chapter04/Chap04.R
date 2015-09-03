@@ -4,8 +4,8 @@
 
 # 桜田さんから預かったデータを、天羽さんが整理した結果からスタート
 menus <- read.csv(file.choose(), stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
-#  AmosMAC/Chapter03/menus.csvを選択する
-# menus <- read.csv(" AmosMAC/Chapter03/menus.csv", stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
+#  Chapter03/menus.csvを選択する
+# menus <- read.csv(" Chapter03/menus.csv", stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
 # 3列あるデータが、それぞれ性質がちがう。品目はカテゴリであり、日付は日付型データ、売上は数値である。読み込む際にこれを指定している（読み込んだ後で設定することもできる）
 
 # データ操作の準備
@@ -84,8 +84,8 @@ milk2 %>% ggplot(aes(日付, 売上)) + geom_line() +  scale_x_date()  + ggtitle
 # Code 04-08 相関がある？ない？
 # 身長と年収のデータ
 heights <- read.csv(file.choose())
-#  AmosMAC/Chapter04/heights.csvを選択する
-# heights <- read.csv("AmosMAC/Chapter04/heights.csv")
+#  Chapter04/heights.csvを選択する
+# heights <- read.csv("Chapter04/heights.csv")
 
 # 相関は小さい
 heights %>% cor # cor (heights)
@@ -105,8 +105,8 @@ xy %>% ggplot(aes (x = X, y = Y)) + geom_point(size  =2 )+ ggtitle("相関があ
 # アイスクリームの売り上げデータをicecreamとして読み込み
 # Code04-09
 icecream <- read.csv(file.choose())
-#  AmosMAC/Chapter04/icecream.csvを選択する
-# icecream <- read.csv("AmosMAC/Chapter04/icecream.csv")
+#  Chapter04/icecream.csvを選択する
+# icecream <- read.csv("Chapter04/icecream.csv")
 icecream %>% head #head (icecream)
 # 気温と販売数の散布図を描く
 icecream %>% ggplot(aes(気温,  販売数)) + geom_point(size = 2)

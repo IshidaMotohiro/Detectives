@@ -4,8 +4,8 @@
 
 # Code06-01
 # 小太郎さんの万引被害データ
-kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"))# "AmosWIN/Chapter06/kotaro.csv"を選択
-# kotaro <- read.csv("AmosWIN/Chapter06/kotaro.csv", colClasses = c("numeric","factor","Date","factor","factor"))# "kotaro.csv"
+kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"))# "Chapter06/kotaro.csv"を選択
+# kotaro <- read.csv("Chapter06/kotaro.csv", colClasses = c("numeric","factor","Date","factor","factor"))# "kotaro.csv"
 # 時系列データを扱うのに便利なパッケージをインストール
 # install.packages("xts")
 library("xts") 
