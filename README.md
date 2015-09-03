@@ -21,7 +21,7 @@ URL: [AMAOZN](www.amazon.co.jp/gp/product/4797382309/)
 - [RStudio](https://www.rstudio.com/products/rstudio/download/)
 
 
-あるいは以下のサイトが参考になるでしょう。難しいことはありません。パソコンにあわせてファイルをダウンロードしてダブルクリックするだけです。
+あるいは以下のサイトが参考になるでしょう。難しいことはありません。利用しているパソコン(OS)に適合したファイルをダウンロードしてダブルクリックするだけです。
 
  - [竹澤邦夫先生のサイト(少し古いが手順はほぼ同じ)](http://cse.naro.affrc.go.jp/takezawa/r-tips/r/01.html)
  - [三重大学奥村晴彦先生のサイト Windows](https://oku.edu.mie-u.ac.jp/~okumura/stat/R-win.html)
@@ -36,7 +36,7 @@ URL: [AMAOZN](www.amazon.co.jp/gp/product/4797382309/)
 
 ## RStudio でファイルを開くと文字化けする場合
 
-特にWindowsで利用している場合に起ることがあるのですが、スクリプトを開いてみると中身が文字化けしていることはあります。この場合は以下の対処をしてみてください。
+特にWindowsで利用している場合に起こることがあるのですが、スクリプトを開いてみると中身が文字化けしていることはあります。この場合は以下の対処をしてみてください。
 
 1. ウィンドウ上部のメニューから File -> Reopen with Encoding と操作し、表示されたダイアログで文字コードを選んでOKを押す
  - Windowsならば __CP932__
