@@ -49,4 +49,8 @@ URL: [AMAOZN](www.amazon.co.jp/gp/product/4797382309/)
 R ないしRStudioで以下をConsole画面に入力してからEnterを押してください。ここで、いったんRないしRStudioを終了してください。次の起動から日本語環境設定が有効になります。
 この操作はRないしRStudioをインストールした直後に1回だけ実行すればよいです。
 
-
+```
+# 日本語設定 RおよびRStudioをインストール後に1度だけ下の1行を実行してください
+source ("http://rmecab.jp/R/Rprofile.R")
+# この設定は次回の起動から有効になりますので、いったんRないしRStudioを終了させます
+```

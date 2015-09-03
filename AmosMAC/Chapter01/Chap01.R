@@ -1,72 +1,73 @@
 # vers. 1.0
-### ----- ��1�� ----- ###
+### ----- 第1章 ----- ###
 
-# ���̋L�����V���[�v�L��(#)�Ƃ����܂���
-# RStudio(R)�́A���̋L������E�ɏ����ꂽ���e�͖������܂�
-# ����𗘗p����R�̃X�N���v�g�ł�#�L���E�ɃR�����g�i���Y�^�j���������Ƃ������ł�
+# 左の記号をシャープ記号(#)といいますが
+# RStudio(R)は、この記号から右に書かれた内容は無視します
+# これを利用してRのスクリプトでは#記号右にコメント（備忘録）を書くことが多いです
 
-# ���{��ݒ� R�����RStudio���C���X�g�[�����1�x��������1�s�����s���Ă�������
+# 日本語設定 RおよびRStudioをインストール後に1度だけ下の1行を実行してください
 source ("http://rmecab.jp/R/Rprofile.R")
+# この設定は次回の起動から有効になりますので、いったんRないしRStudioを終了させます
 
-# ������R�ŃV�~�����[�V����
-# �O���1����\������kuji���쐬
-kuji <- c("�O��","1��")
-# kuji�̒��g���m�F
+# くじをRでシミュレーション
+# 外れと1等を表現するkujiを作成
+kuji <- c("外れ","1等")
+# kujiの中身を確認
 kuji
 
-# kuji�̗v�f��2��������R�Ŗ��߂�������
-#�u�O��v�Ɓu1���v�� �X�X�F�P�̊����ŏo������悤��
-# �����ł���
+# kujiの要素は2つだけだがRで命令を書けば
+#「外れ」と「1等」を ９９：１の割合で出現するように
+# 調整できる
 sample(kuji, 1, prob = c(99,1))
-# sample�͖����(�����_��)�ɑI�яo���֐���
-# ��ł�1�������o���Ă���
+# sampleは無作為(ランダム)に選び出す関数で
+# 上では1個だけ取り出している
 
-# 100���o���ꍇ��replace = TRUE��ǉ��Ŏw�肷��
-# ���̎w��ɂ�艽������Ă��X�X�F�P�̊������ς��Ȃ�
+# 100個取り出す場合はreplace = TRUEを追加で指定する
+# この指定により何回引いても９９：１の割合が変わらない
 sample(kuji, 100, prob = c(99,1), replace = TRUE)
 
 
-#�@�����𖈓�100��A1�T�Ԉ����ĂP�����o���{�����V�~�����[�V��������
-replicate (7, sample (kuji, 100, prob = c(99,1), replace = TRUE) ) # �P�O�O�s�V��̌��ʂ��\�������
-# replicate �Ƃ����֐��͖��߂��w�肳�ꂽ�񐔎��s���Ă����
-### �����@replicate (�񐔁C����)
+#　くじを毎日100回、1週間引いて１等が出た本数をシミュレーションする
+replicate (7, sample (kuji, 100, prob = c(99,1), replace = TRUE) ) # １００行７列の結果が表示される
+# replicate という関数は命令を指定された回数実行してくれる
+### 書式　replicate (回数，命令)
 
-# �P�����o���{���𐔂���
-sum ( replicate (7, sample (kuji, 100, prob = c(99,1), replace = TRUE) ) == "1��")
-### ������sum (A == "1��")�ŁAA�̒��Ɋ܂܂��P���𐔂��閽��
+# １等が出た本数を数える
+sum ( replicate (7, sample (kuji, 100, prob = c(99,1), replace = TRUE) ) == "1等")
+### 書式はsum (A == "1等")で、Aの中に含まれる１等を数える命令
 
 
-# ����100�񂭂����������Ƃ�7���ԌJ��Ԃ���1���̖{�������v���邱�Ƃ��A�����1000�T�J��Ԃ����߂��쐬���Ă݂�
-# ���ʂ�res�Ƃ��ĕۑ�����
-res <- replicate(1000, sum(replicate (7, sample (kuji, 100, prob = c(99,1), replace = TRUE) ) == "1��"))
-### �����@replicate (1000 , ���v�ireplicate (7, 100�񂭂����������ꍇ��1���̖{���j)
+# さて100回くじを引くことを7日間繰り返して1等の本数を合計することを、さらに1000週繰り返す命令を作成してみる
+# 結果はresとして保存する
+res <- replicate(1000, sum(replicate (7, sample (kuji, 100, prob = c(99,1), replace = TRUE) ) == "1等"))
+### 書式　replicate (1000 , 合計（replicate (7, 100回くじを引いた場合の1等の本数）)
 
-# �V���v���ȃq�X�g�O����
+# シンプルなヒストグラム
 hist(res)
 
-#  ���������Â����O���t�𐶐�
-# ggplot2���܂��C���X�g�[�����Ă��Ȃ��ꍇ��
-# �����́w�ԊO�ҁx���Q�Ƃ̂���
-# ���邢�͉��̖��߂��i����#���폜���Ă���j���s���Ă��悢
+#  もう少し凝ったグラフを生成
+# ggplot2をまだインストールしていない場合は
+# 巻末の『番外編』を参照のこと
+# あるいは下の命令を（頭の#を削除してから）実行してもよい
 # install.packages("ggplot2")
-# �Ȃ��p�b�P�[�W�̃C���X�g�[����1�񂾂����s����΂悢�i�ʂ̓���RStudio�𗘗p����ꍇ�A���ł�ggplot2���C���X�g�[�����Ă���̂Ȃ�΁A�ēx�C���X�g�[����������s����K�v�͂Ȃ��j
+# なおパッケージのインストールは1回だけ実行すればよい（別の日にRStudioを利用する場合、すでにggplot2をインストールしているのならば、再度インストール操作を実行する必要はない）
 
-# ggplt2�𗘗p���邽�߂ɓǂݍ���
+# ggplt2を利用するために読み込む
 library(ggplot2)
 
-### �`��̂��߂Ƀf�[�^�𐮌`
+### 描画のためにデータを整形
 resD <- as.data.frame(table(res))
-# �`����10�s������\��
+# 冒頭の10行だけを表示
 head (resD, n = 10)# 
 
-### �Ȃ����l�̓����_���ɐ������Ă���̂ŁA���s���ʂ͖���A�����ɈقȂ�܂�
-ggplot(resD, aes(y = Freq, x = res)) +  geom_histogram(binwidth = 1, stat="identity", fill = "steelblue") + xlab("�T�̓������") + ylab ("�T�̐�") + ggtitle("�q�X�g�O����") 
+### なお数値はランダムに生成しているので、実行結果は毎回、微妙に異なります
+ggplot(resD, aes(y = Freq, x = res)) +  geom_histogram(binwidth = 1, stat="identity", fill = "steelblue") + xlab("週の当たり個数") + ylab ("週の数") + ggtitle("ヒストグラム") 
 
 
 
-# RStudio��������ƐG���Ă݂�
+# RStudioをちょっと触ってみた
 
-# �����Z
+# 足し算
 1 + 2 + 3 + 4 + 5
 
 sum (1:1000)
@@ -78,48 +79,48 @@ sample (1:6, 1)
 
 sample (1:6, 100, replace = TRUE)
 
-# �Čf
-kuji <- c("�O��","1��")
-kuji # �m�F
-# kuji����1�����o���B�������u�O��v�Ɓu1���v��99:1�̊����ŏo������悤�ݒ�
+# 再掲
+kuji <- c("外れ","1等")
+kuji # 確認
+# kujiから1個を取り出す。ただし「外れ」と「1等」が99:1の割合で出現するよう設定
 sample(kuji, 1, prob = c(99,1))
 
 sample(kuji, 100, prob = c(99,1), replace = TRUE)
 
 
-# �T�C�R����100��i100�j�U��
+# サイコロを100回（100個）振る
 table (sample (1:6, 100, replace = TRUE))
 
-# �q�X�g�O����
+# ヒストグラム
 hist (sample (1:6, 100, replace = TRUE), breaks = 0:6)
 
 
-# �T�C�R���̕��ϒl�i�����_���ɐU�������ʂȂ̂Ŗ��񐔒l�͈قȂ�j
+# サイコロの平均値（ランダムに振った結果なので毎回数値は異なる）
 mean(sample (1:6, 100, replace = TRUE))
 
-# �T�C�R����1����U��V�~�����[�V�����̃q�X�g�O����
+# サイコロを1万回振るシミュレーションのヒストグラム
 res <- sample(1:6, 10000, replace = TRUE)
 
-# �V���v���ȃq�X�g�O����
+# シンプルなヒストグラム
 hist(res, breaks = 0:6)
 
-# �����Â����O���t���쐬���邽�߃f�[�^�𐮌`
-saikoro <- data.frame(�T�C�R�� = res)
-# �`���������m�F
+# 少し凝ったグラフを作成するためデータを整形
+saikoro <- data.frame(サイコロ = res)
+# 冒頭部分を確認
 head (saikoro)
 
-# ���ۂɕ`�悷��
-ggplot(saikoro, aes (x = �T�C�R��)) + xlim(1,6) + geom_histogram(binwidth = 1 , fill = "steelblue", colour="black",  alpha = 0.5) + xlab("�o����") + ylab ("��") + ggtitle("�T�C�R����1����U��������") 
+# 実際に描画する
+ggplot(saikoro, aes (x = サイコロ)) + xlim(1,6) + geom_histogram(binwidth = 1 , fill = "steelblue", colour="black",  alpha = 0.5) + xlab("出た数") + ylab ("回数") + ggtitle("サイコロを1万回振った結果") 
 
 
-# �T�C�R���̕��ςƊ��Ғl
-# �����ł����߂��J��Ԃ����s���Ă����replicate�֐��𗘗p
+# サイコロの平均と期待値
+# ここでも命令を繰り返し実行してくれるreplicate関数を利用
 res <- replicate(100000,  mean (sample(1:6, 100,replace = TRUE)))
-# �V���v���ȃq�X�g�O����
+# シンプルなヒストグラム
 hist(res)
 
-# ���������Â����O���t�𐶐����邽�߃T�C�R�������̌��ʃf�[�^�𐮌`
-saikoro <- data.frame(�T�C�R�� = res)
-# ���ۂɕ`���Ă݂�
-ggplot(saikoro, aes (x = �T�C�R��)) + geom_histogram(binwidth = .1, fill = "steelblue", colour="black",  alpha = 0.5) + xlab("���Ғl") + ylab ("��") + ggtitle("�T�C�R����100��U�������Ғl") 
+# もう少し凝ったグラフを生成するためサイコロ投げの結果データを整形
+saikoro <- data.frame(サイコロ = res)
+# 実際に描いてみる
+ggplot(saikoro, aes (x = サイコロ)) + geom_histogram(binwidth = .1, fill = "steelblue", colour="black",  alpha = 0.5) + xlab("期待値") + ylab ("回数") + ggtitle("サイコロを100回振った期待値") 
 
