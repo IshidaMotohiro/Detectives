@@ -15,7 +15,13 @@ URL: [AMAOZN](www.amazon.co.jp/gp/product/4797382309/)
 
 ## R および RStudio のインストールについて
 
-本書の番外編を参照してください。あるいは以下のサイトが参考になるでしょう。難しいことはありません。パソコンにあわせてファイルをダウンロードしてダブルクリックするだけです。
+本書の番外編を参照してください。
+
+- [R](http://cran.ism.ac.jp/)
+- [RStudio](https://www.rstudio.com/products/rstudio/download/)
+
+
+あるいは以下のサイトが参考になるでしょう。難しいことはありません。パソコンにあわせてファイルをダウンロードしてダブルクリックするだけです。
 
  - [竹澤邦夫先生のサイト(少し古いが手順はほぼ同じ)](http://cse.naro.affrc.go.jp/takezawa/r-tips/r/01.html)
  - [三重大学奥村晴彦先生のサイト Windows](https://oku.edu.mie-u.ac.jp/~okumura/stat/R-win.html)
