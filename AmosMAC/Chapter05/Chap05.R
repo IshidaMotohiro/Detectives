@@ -34,7 +34,7 @@ tkplot(m.g, vertex.label =V(m.g)$name, edge.label =E(m.g)$weight , vertex.size =
 
 # 森鴎外と夏目漱石
 # Code05-02
-m <- docNgram ("bungo", type = 0) 
+m <- docNgram ("AmosMAC/Chapter05/bungo", type = 0) 
 
 # 列名がデフォルトだとファイル名なので、わかりやすく変更
 colnames (m) <- c("鴎外1","鴎外2","鴎外3","鴎外4","漱石1","漱石2","漱石3","漱石4")
@@ -64,7 +64,7 @@ dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape =
 
 # Code05-04
 # 太宰の4作品を加えたフォルダを解析する
-m2 <- docNgram ("dazai", type = 0) 
+m2 <- docNgram ("AmosMAC/Chapter05/dazai", type = 0) 
 colnames(m2) <- c("太宰1","太宰2","太宰3","太宰4",
                   "鴎外1","鴎外2","鴎外3","鴎外4",
                   "漱石1","漱石2","漱石3","漱石4")
@@ -94,7 +94,8 @@ round (m2.pca[[2]], 2)
 
 ## クレーマーの手紙とブログ記事データ
 kiji <- read.csv(file.choose(), row.name = 1)
-# kiji <- read.csv("Chapter05_proj/mb.csv", row.name = 1)
+# AmosMAC/Chapter05/mb.csv を選択する
+# kiji <- read.csv("AmosMAC/Chapter05/mb.csv", row.name = 1)
 
 kiji
 
@@ -127,7 +128,9 @@ hanahuda %>% t %>% as.table #as.table (t(hanahuda))
 
 # Code05-08
 # 口コミ分析
-kutikomi <- read.csv("kutikomi.csv", row.name = 1)
+kutikomi <- read.csv(file.choose(), row.name = 1)
+#  AmosMAC/Chapter05/kutikomi.csvを選択する
+# kutikomi  <- read.csv("AmosMAC/Chapter05/kutikomi.csv", row.name = 1)
 kutikomi %>% head 
 
 

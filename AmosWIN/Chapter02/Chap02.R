@@ -16,9 +16,10 @@ mean (1:10)
 
 
 # まずはデータの入力から# ダイアログからファイルを選ぶ
- breads <- read.csv (file.choose()) 
+breads <- read.csv (file.choose()) 
+# AmosWIN/Chapter02/breads.csvを選択
 ## ファイル名を指定してもよい。ただしファイルの位置指定に注意
-# breads <- read.csv ("Chapter02_proj/breads.csv")
+# breads <- read.csv ("AmosWIN/Chapter02/breads.csv")
 ## breads <- read.csv (file.choose())
 # 冒頭部分だけを表示
 head (breads)
@@ -57,7 +58,7 @@ ggplot(saikoro, aes (x = サイコロ)) + geom_histogram(aes(y = ..density..),binwid
 ##  +stat_function以降の部分が、正規分布の釣鐘型の曲線を追加するコード
 
 # 食パンデータの読み込み
-breads <- read.csv (file.choose())# "Chapter02_proj/breads.csv"
+breads <- read.csv (file.choose())# "AmosWIN/Chapter02/breads.csv"を選択
 # ヒストグラムと正規分布を当てはめた曲線
 ggplot (breads, aes(x = weight))+ geom_histogram(aes(y = ..density..),binwidth = 10, fill = "steelblue", colour="black",  alpha = 0.5) + xlim(360, 430)  + xlab("食パンの重さ") + ylab ("個数") + ggtitle("食パンのヒストグラム") + stat_function(geom="line", fun = dnorm, args=list(mean = mean (breads$weight), sd = sd (breads$weight))) 
 ##  +stat_function以降の部分が、正規分布の釣鐘型の曲線を追加するコード

@@ -36,15 +36,15 @@ URL: [AMAOZN](www.amazon.co.jp/gp/product/4797382309/)
 
 ## RStudio でファイルを開くと文字化けする場合
 
-特にWindowsで利用している場合に起ることがあるですが、スクリプトを開いてみると、中身が文字化けしていることはあります。この場合は以下の対処をしてみてください。
+特にWindowsで利用している場合に起ることがあるのですが、スクリプトを開いてみると中身が文字化けしていることはあります。この場合は以下の対処をしてみてください。
 
-1. ウィンドウ上部のメニューから File -> Reopen with Encoding とメニューを操作し、表示されたダイアログで文字コードを選んでOKを押す
+1. ウィンドウ上部のメニューから File -> Reopen with Encoding と操作し、表示されたダイアログで文字コードを選んでOKを押す
  - Windowsならば __CP932__
  - Mac ならば __UTF-8__
 
  - ![Encoding1](img/RStudioChar2.png)
 
-2. ウィンドウ上部のメニューから Help -> Global Options とメニューを操作し、表示されたダイアログで左の __General__ をクリックすると右下に __Default__ __text__ __encoding:__ とあるので __Change...__ を押す。表示されたダイアログで文字コードを選んでOKを押す
+2. ウィンドウ上部のメニューから Help -> Global Options と操作し、表示されたダイアログで左の __General__ をクリックすると右下に __Default__ __text__ __encoding:__ とあるので __Change...__ を押す。表示されたダイアログで文字コードを選んでOKを押す
  - Windowsならば __CP932__
  - Mac ならば __UTF-8__
 

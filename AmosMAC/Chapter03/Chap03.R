@@ -2,7 +2,7 @@
 ### ----- 第3章 ----- ###
 
 # データを分割表にしてみる
-dat <- read.csv (file.choose())# Chapter03_proj/sample.csvを選択すること
+dat <- read.csv (file.choose())# AmosMAC/Chapter03/sample.csvを選択する
 dat
 
 table (dat)
@@ -25,7 +25,7 @@ dat2 %>% chisq.test
 # chisq.test (dat2)# こうしても同じ結果をえられる
 
 # 独立性の検定の意味
-survey <- read.csv(file.choose())# "Chapter03_proj/survey.csv"
+survey <- read.csv(file.choose())# AmosMAC/Chapter03/survey.csvを選択する
 survey %>% head # head (survey) に同じ
 
 

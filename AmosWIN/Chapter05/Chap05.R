@@ -6,7 +6,11 @@
 # install.packages("RMeCab", repos = "http://rmecab.jp/R")
 library(RMeCab)
 # w‘–‚êƒƒƒXx‚ğŒ`‘Ô‘f‰ğÍ‚É‚©‚¯A–¼ŒAŒ`—eŒA“®Œ‚ğ’Šo
-m <- NgramDF("merosu.txt", type = 1, pos = c("–¼Œ","Œ`—eŒ", "“®Œ"))
+m <- NgramDF(file.choose(), type = 1, pos = c("–¼Œ","Œ`—eŒ", "“®Œ"))
+# AmosWIN/Chapter05/merosu.txt‚ğ‘I‘ğB‚È‚¨AWindows‚ÌRStudio‚ÅiGithub‚Æ˜AŒg‚µ‚Äì‹Æ‚µ‚Ä‚¢‚éê‡jÀsŒã‚ÉˆÈ‰º‚Ì‚æ‚¤‚ÈŒx‚ªo‚é‚±‚Æ‚ª‚ ‚è‚Ü‚·B‚±‚±‚Å‚Í–³‹‚µ‚Ä–â‘è‚ ‚è‚Ü‚¹‚ñB
+# Warning message:
+#  In grepl("\n", lines, fixed = TRUE) :
+#  input string 1 is invalid in this locale]
 
 library(dplyr)
 nrow (m) #ƒpƒCƒvˆ—‚È‚ç‚Î m %>% nrow #
@@ -34,7 +38,7 @@ tkplot(m.g, vertex.label =V(m.g)$name, edge.label =E(m.g)$weight , vertex.size =
 
 # X‰¨ŠO‚Æ‰Ä–ÚŸùÎ
 # Code05-02
-m <- docNgram ("bungo", type = 0) 
+m <- docNgram ("AmosWIN/Chapter05/bungo", type = 0) 
 
 # —ñ–¼‚ªƒfƒtƒHƒ‹ƒg‚¾‚Æƒtƒ@ƒCƒ‹–¼‚È‚Ì‚ÅA‚í‚©‚è‚â‚·‚­•ÏX
 colnames (m) <- c("‰¨ŠO1","‰¨ŠO2","‰¨ŠO3","‰¨ŠO4","ŸùÎ1","ŸùÎ2","ŸùÎ3","ŸùÎ4")
@@ -64,7 +68,7 @@ dega %>% ggplot(aes(x = ‚ª, y = ‚Å , group=ì‰Æ ) ) + geom_point(aes(shape = ì‰
 
 # Code05-04
 # ‘¾É‚Ì4ì•i‚ğ‰Á‚¦‚½ƒtƒHƒ‹ƒ_‚ğ‰ğÍ‚·‚é
-m2 <- docNgram ("dazai", type = 0) 
+m2 <- docNgram ("AmosWIN/Chapter05/dazai", type = 0) 
 colnames(m2) <- c("‘¾É1","‘¾É2","‘¾É3","‘¾É4",
                   "‰¨ŠO1","‰¨ŠO2","‰¨ŠO3","‰¨ŠO4",
                   "ŸùÎ1","ŸùÎ2","ŸùÎ3","ŸùÎ4")
@@ -127,7 +131,9 @@ hanahuda %>% t %>% as.table #as.table (t(hanahuda))
 
 # Code05-08
 # ŒûƒRƒ~•ªÍ
-kutikomi <- read.csv("kutikomi.csv", row.name = 1)
+kutikomi <- read.csv(file.choose(), row.name = 1)
+# AmosWIN/Chapter05/kutikomi.csv ‚ğ‘I‘ğ
+ # kutikomi <- read.csv("AmosMAC/Chapter05/kutikomi.csv", row.name = 1)
 kutikomi %>% head 
 
 
@@ -148,7 +154,7 @@ kuti.clus %>% plot
 kuti.cor <- kutikomi %>% MASS::corresp(nf = 2)
 # kuti.cor <- MASS::corresp(kutikomi, nf = 2)
 
-kuti.cor %>% biplot(cex = 1.6)
+kuti.cor %>% biplot(cex = 1.0)
 
 
 
