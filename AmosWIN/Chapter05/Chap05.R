@@ -118,10 +118,10 @@ library(rvest)
 library(dplyr)
 
 # Wikiの花札のぺーじを取得。データ取得に数秒かかる
-wiki <- html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
+wiki <- read_html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
 hanahuda <- wiki %>% html_nodes("table") %>% .[[3]] %>% html_nodes("td") %>% html_text() 
 dim(hanahuda) <- c(6,12)
-hanahuda %>% t %>% as.table #as.table (t(hanahuda))
+hanahuda %>% t %>% as.table %>% iconv (from = "UTF-8")#as.table (t(hanahuda))
 
 #なおMacを利用している場合は、以下のように実行できる（日本語文字コードの関係で、残念ながらWindowsだとうまく動作しないので注意）
 # html <- html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
