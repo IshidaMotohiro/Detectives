@@ -38,7 +38,7 @@ yakimesi %>% ggplot( aes(日付, 売上)) + geom_line() +  scale_x_date()  + ggt
 
 # Code04-03
 # 麺類を抽出
-noodles <- menus %>%  filter (品目 %in% c( "スパゲッティー", "ソース焼きそば", "そば", "うどん", "ちゃんぽん", "ラーメン"))
+noodles <- menus %>%  filter (品目 %in% c( "スパゲッティー", "ソース焼きそば",  "うどん", "ちゃんぽん", "ラーメン"))
 # 時系列グラフ
 noodles %>% ggplot(aes(日付, 売上)) + geom_line()+ facet_wrap (~品目)  + ggtitle("麺類の売上")
 
@@ -50,7 +50,7 @@ noodles %>% ggplot(aes(日付, 売上)) + geom_line()+ facet_wrap (~品目)  + g
 library(tidyr)
 
 # 相関行列作成のためにデータを整形
-noodles2 <- menus %>%  filter (品目 %in% c("おにぎり", "みそ汁", "カレー", "お茶漬け","スパゲッティー", "ソース焼きそば", "そば", "うどん", "ちゃんぽん", "ラーメン")) %>%  spread (品目, 売上) 
+noodles2 <- menus %>%  filter (品目 %in% c("おにぎり", "みそ汁", "カレー", "お茶漬け","スパゲッティー", "ソース焼きそば", "うどん", "ちゃんぽん", "ラーメン")) %>%  spread (品目, 売上) 
 
 # 冒頭を確認し
 head (noodles2)

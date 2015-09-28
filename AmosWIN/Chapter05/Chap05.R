@@ -7,7 +7,7 @@
 library(RMeCab)
 # 『走れメロス』を形態素解析にかけ、名詞、形容詞、動詞を抽出
 m <- NgramDF(file.choose(), type = 1, pos = c("名詞","形容詞", "動詞"))
-# Chapter05/merosu.txtを選択。なお、WindowsのRStudioで（Githubと連携して作業している場合）実行後に以下のような警告が出ることがあります。ここでは無視して問題ありません。
+# AmosWIN/Chapter05/merosu.txtを選択。なお、WindowsのRStudioで（Githubと連携して作業している場合）実行後に以下のような警告が出ることがあります。ここでは無視して問題ありません。
 # Warning message:
 #  In grepl("\n", lines, fixed = TRUE) :
 #  input string 1 is invalid in this locale]
@@ -97,8 +97,8 @@ round (m2.pca[[2]], 2)
 ############################
 
 ## クレーマーの手紙とブログ記事データ
-kiji <- read.csv(file.choose(), row.name = 1)
-# kiji <- read.csv("Chapter05_proj/mb.csv", row.name = 1)
+kiji <- read.csv(file.choose(), row.name = 1)#mb.csvを選択
+# kiji <- read.csv("AmosWIN/Chapter05_proj/mb.csv", row.name = 1)
 
 kiji
 
@@ -132,8 +132,8 @@ hanahuda %>% t %>% as.table %>% iconv (from = "UTF-8")
 # Code05-08
 # 口コミ分析
 kutikomi <- read.csv(file.choose(), row.name = 1)
-# Chapter05/kutikomi.csv を選択
- # kutikomi <- read.csv("Chapter05/kutikomi.csv", row.name = 1)
+# AmosWIN/Chapter05/kutikomi.csv を選択
+ # kutikomi <- read.csv("AmosWIN/Chapter05/kutikomi.csv", row.name = 1)
 kutikomi %>% head 
 
 
