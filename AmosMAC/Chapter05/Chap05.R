@@ -6,7 +6,7 @@
 # install.packages("RMeCab", repos = "http://rmecab.jp/R")
 library(RMeCab)
 # 『走れメロス』を形態素解析にかけ、名詞、形容詞、動詞を抽出
-m <- NgramDF("merosu.txt", type = 1, pos = c("名詞","形容詞", "動詞"))
+m <- NgramDF("AmosMAC/Chapter05/merosu.txt", type = 1, pos = c("名詞","形容詞", "動詞"))
 
 library(dplyr)
 nrow (m) #パイプ処理ならば m %>% nrow #
@@ -34,7 +34,7 @@ tkplot(m.g, vertex.label =V(m.g)$name, edge.label =E(m.g)$weight , vertex.size =
 
 # 森鴎外と夏目漱石
 # Code05-02
-m <- docNgram ("Chapter05/bungo", type = 0) 
+m <- docNgram ("AmosMAC/Chapter05/bungo", type = 0) 
 
 # 列名がデフォルトだとファイル名なので、わかりやすく変更
 colnames (m) <- c("鴎外1","鴎外2","鴎外3","鴎外4","漱石1","漱石2","漱石3","漱石4")
@@ -64,7 +64,7 @@ dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape =
 
 # Code05-04
 # 太宰の4作品を加えたフォルダを解析する
-m2 <- docNgram ("Chapter05/dazai", type = 0) 
+m2 <- docNgram ("AmosMAC/Chapter05/dazai", type = 0) 
 colnames(m2) <- c("太宰1","太宰2","太宰3","太宰4",
                   "鴎外1","鴎外2","鴎外3","鴎外4",
                   "漱石1","漱石2","漱石3","漱石4")
@@ -77,7 +77,7 @@ dega2 <- data.frame(が = m2[1,] ,で = m2[3,],作家=c("太宰","太宰","太�
                                                 "漱石","漱石","漱石","漱石"))
 dega2
 
-dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
+dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape_manual(values=c(21,15,24))
 # ggplot(dega2, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
 
 # Code05-05
@@ -94,7 +94,7 @@ round (m2.pca[[2]], 2)
 
 ## クレーマーの手紙とブログ記事データ
 kiji <- read.csv(file.choose(), row.name = 1)
-# Chapter05/mb.csv を選択する
+# AmosMac/Chapter05/mb.csv を選択する
 # kiji <- read.csv("Chapter05/mb.csv", row.name = 1)
 
 kiji

@@ -38,7 +38,7 @@ tkplot(m.g, vertex.label =V(m.g)$name, edge.label =E(m.g)$weight , vertex.size =
 
 # 森鴎外と夏目漱石
 # Code05-02
-m <- docNgram ("Chapter05/bungo", type = 0) 
+m <- docNgram ("AmosWin/Chapter05/bungo", type = 0) 
 
 # 列名がデフォルトだとファイル名なので、わかりやすく変更
 colnames (m) <- c("鴎外1","鴎外2","鴎外3","鴎外4","漱石1","漱石2","漱石3","漱石4")
@@ -63,12 +63,12 @@ dega <- data.frame(が = m[1,] ,で = m[3,],作家=c("鴎外","鴎外","鴎外","鴎外","漱
 dega
 
 library(ggplot2)
-dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
+dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)# +scale_shape_manual(values=c(22,23))
 # ggplot(dega, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
 
 # Code05-04
 # 太宰の4作品を加えたフォルダを解析する
-m2 <- docNgram ("Chapter05/dazai", type = 0) 
+m2 <- docNgram ("AmosWin/Chapter05/dazai", type = 0) 
 colnames(m2) <- c("太宰1","太宰2","太宰3","太宰4",
                   "鴎外1","鴎外2","鴎外3","鴎外4",
                   "漱石1","漱石2","漱石3","漱石4")
@@ -83,7 +83,7 @@ dega2
 
 dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
 # ggplot(dega2, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
-
+dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家),size = 6) +scale_shape_manual(values=c(21,15,24))
 # Code05-05
 # 主成分分析
 # パイプの途中にt関数をはさんで、データを横に倒す（つまり行と列を入れ替える）
