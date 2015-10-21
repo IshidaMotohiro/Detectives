@@ -59,8 +59,8 @@ dega <- data.frame(が = m[1,] ,で = m[3,],作家=c("鴎外","鴎外","鴎外",
 dega
 
 library(ggplot2)
-dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
-# ggplot(dega, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
+dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape_manual(values=c(22,23))# + scale_shape(solid = FALSE)
+# ggplot(dega, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape_manual(values=c(22,23)) # + scale_shape(solid = FALSE)
 
 # Code05-04
 # 太宰の4作品を加えたフォルダを解析する
@@ -78,7 +78,7 @@ dega2 <- data.frame(が = m2[1,] ,で = m2[3,],作家=c("太宰","太宰","太�
 dega2
 
 dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape_manual(values=c(21,15,24))
-# ggplot(dega2, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
+# ggplot(dega2, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape_manual(values=c(21,15,24))
 
 # Code05-05
 # 主成分分析
@@ -102,7 +102,7 @@ kiji
 ## 主成分分析
 blog <- kiji %>% prcomp # blog <- prcomp(mail)
 
-blog %>% biplot # biplot(blog, cex = 1.2)
+blog %>% biplot (cex = 1.2)# biplot(blog, cex = 1.2)
 
 
 ## 口コミ分析
@@ -116,6 +116,7 @@ library(dplyr)
 
 # Wikiの花札のぺーじを取得。データ取得に数秒かかる
 wiki <- read_html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
+## rvest パッケージの以前のバージョンでは html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
 hanahuda <- wiki %>% html_nodes("table") %>% .[[3]] %>% html_nodes("td") %>% html_text() 
 dim(hanahuda) <- c(6,12)
 hanahuda %>% t %>% as.table #as.table (t(hanahuda))
@@ -151,7 +152,7 @@ kuti.clus %>% plot
 kuti.cor <- kutikomi %>% MASS::corresp(nf = 2)
 # kuti.cor <- MASS::corresp(kutikomi, nf = 2)
 
-kuti.cor %>% biplot(cex = 1.6)
+kuti.cor %>% biplot(cex = 1.2)
 
 
 
@@ -163,5 +164,5 @@ HE
 
 HEca <- HE %>% MASS::corresp(nf = 2)
 
-HEca %>% biplot 
+HEca %>% biplot  (cex = 1.2)# 
 

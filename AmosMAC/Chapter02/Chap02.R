@@ -16,9 +16,9 @@ mean (1:10)
 
 
 # まずはデータの入力から# ダイアログからファイルを選ぶ
- breads <- read.csv (file.choose()) 
+breads <- read.csv (file.choose()) # "AmosMac/Chapter02/bread.csv" を選択
 ## ファイル名を指定してもよい。ただしファイルの位置指定に注意
-# breads <- read.csv ("Chapter02_proj/breads.csv")
+# breads <- read.csv ("Chapter02/breads.csv")
 ## breads <- read.csv (file.choose())
 # 冒頭部分だけを表示
 head (breads)
