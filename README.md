@@ -1,9 +1,12 @@
-探偵事務所に入ってしまった僕の《データ分析》事件簿 
+新米探偵、データ分析に挑む
 ==================================================
+著者：石田基広
 出版社: SBクリエイティブ
 ISBN-13: 978-4797382303
-発売日:2015/10/17
-URL: [AMAOZN](www.amazon.co.jp/gp/product/4797382309/)
+発売日:2015/10/28
+URL: [SBCr](http://isbn.sbcr.jp/82303)
+     [author](https://github.com/IshidaMotohiro/Detectives)
+     [AMAZON](http://www.amazon.co.jp/dp/4797382309/)
 
 付録：データおよびRスクリプト
 
