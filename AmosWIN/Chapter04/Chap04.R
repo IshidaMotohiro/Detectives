@@ -4,8 +4,8 @@
 
 # 桜田さんから預かったデータを、天羽さんが整理した結果からスタート
 menus <- read.csv(file.choose(), stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
-# Chapter04/menus.csvを選択
-# menus <- read.csv("Chapter04/menus.csv", stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
+# AmosWIN/Chapter04/menus.csvを選択
+# menus <- read.csv("AmosWIN/Chapter04/menus.csv", stringsAsFactors =  FALSE, colClasses = c("factor","Date","numeric"))
 # 3列あるデータが、それぞれ性質がちがう。品目はカテゴリであり、日付は日付型データ、売上は数値である。読み込む際にこれを指定している（読み込んだ後で設定することもできる）
 
 # データ操作の準備
@@ -38,7 +38,7 @@ yakimesi %>% ggplot( aes(日付, 売上)) + geom_line() +  scale_x_date()  + ggtitle
 
 # Code04-03
 # 麺類を抽出
-noodles <- menus %>%  filter (品目 %in% c( "スパゲッティー", "ソース焼きそば", "そば", "うどん", "ちゃんぽん", "ラーメン"))
+noodles <- menus %>%  filter (品目 %in% c( "スパゲッティー", "ソース焼きそば", "うどん","ちゃんぽん", "ラーメン"))
 # 時系列グラフ
 noodles %>% ggplot(aes(日付, 売上)) + geom_line()+ facet_wrap (~品目)  + ggtitle("麺類の売上")
 
@@ -50,7 +50,7 @@ noodles %>% ggplot(aes(日付, 売上)) + geom_line()+ facet_wrap (~品目)  + ggtitle
 library(tidyr)
 
 # 相関行列作成のためにデータを整形
-noodles2 <- menus %>%  filter (品目 %in% c("おにぎり", "みそ汁", "カレー", "お茶漬け","スパゲッティー", "ソース焼きそば", "そば", "うどん", "ちゃんぽん", "ラーメン")) %>%  spread (品目, 売上) 
+noodles2 <- menus %>%  filter (品目 %in% c("おにぎり", "みそ汁", "カレー", "お茶漬け","スパゲッティー", "ソース焼きそば", "うどん", "ちゃんぽん", "ラーメン")) %>%  spread (品目, 売上) 
 
 # 冒頭を確認し
 head (noodles2)

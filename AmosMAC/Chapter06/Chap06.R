@@ -72,7 +72,8 @@ kotaro.glm$coefficients %>% exp %>% round(2)
 
 ###################################
 ## R付属データでロジスティック回帰分析
-data(birthwt, package = "MASS")
+
+load ("Chapter06/birthwt.rda")# データを読み込む
 
 bw.glm <- birthwt %>% glm(low ~ age + lwt + race + smoke + ptl + ht + ui + ftv, data = .,family = binomial)
 # bw.glm <- glm(low ~ age + lwt + race + smoke + ptl + ht + ui + ftv, data = birthwt,family = binomial)
@@ -81,5 +82,3 @@ bw.glm %>% summary
 # summary (bw.glm)
 
 bw.glm$coefficients %>% exp %>%  round(2)
-
-

@@ -7,7 +7,7 @@
 library(RMeCab)
 # 『走れメロス』を形態素解析にかけ、名詞、形容詞、動詞を抽出
 m <- NgramDF(file.choose(), type = 1, pos = c("名詞","形容詞", "動詞"))
-# Chapter05/merosu.txtを選択。なお、WindowsのRStudioで（Githubと連携して作業している場合）実行後に以下のような警告が出ることがあります。ここでは無視して問題ありません。
+# AmosWIN/Chapter05/merosu.txtを選択。なお、WindowsのRStudioで（Githubと連携して作業している場合）実行後に以下のような警告が出ることがあります。ここでは無視して問題ありません。
 # Warning message:
 #  In grepl("\n", lines, fixed = TRUE) :
 #  input string 1 is invalid in this locale]
@@ -38,7 +38,7 @@ tkplot(m.g, vertex.label =V(m.g)$name, edge.label =E(m.g)$weight , vertex.size =
 
 # 森鴎外と夏目漱石
 # Code05-02
-m <- docNgram ("Chapter05/bungo", type = 0) 
+m <- docNgram ("AmosWin/Chapter05/bungo", type = 0) 
 
 # 列名がデフォルトだとファイル名なので、わかりやすく変更
 colnames (m) <- c("鴎外1","鴎外2","鴎外3","鴎外4","漱石1","漱石2","漱石3","漱石4")
@@ -63,12 +63,12 @@ dega <- data.frame(が = m[1,] ,で = m[3,],作家=c("鴎外","鴎外","鴎外","鴎外","漱
 dega
 
 library(ggplot2)
-dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
-# ggplot(dega, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
+dega %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6)  +scale_shape_manual(values=c(22,23)) # + scale_shape(solid = FALSE)#
+# ggplot(dega, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6)  +scale_shape_manual(values=c(22,23)) # + scale_shape(solid = FALSE)
 
 # Code05-04
 # 太宰の4作品を加えたフォルダを解析する
-m2 <- docNgram ("Chapter05/dazai", type = 0) 
+m2 <- docNgram ("AmosWin/Chapter05/dazai", type = 0) 
 colnames(m2) <- c("太宰1","太宰2","太宰3","太宰4",
                   "鴎外1","鴎外2","鴎外3","鴎外4",
                   "漱石1","漱石2","漱石3","漱石4")
@@ -83,7 +83,7 @@ dega2
 
 dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
 # ggplot(dega2, aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家), size = 6) + scale_shape(solid = FALSE)
-
+dega2 %>% ggplot(aes(x = が, y = で , group=作家 ) ) + geom_point(aes(shape = 作家),size = 6) +scale_shape_manual(values=c(21,15,24))
 # Code05-05
 # 主成分分析
 # パイプの途中にt関数をはさんで、データを横に倒す（つまり行と列を入れ替える）
@@ -97,15 +97,15 @@ round (m2.pca[[2]], 2)
 ############################
 
 ## クレーマーの手紙とブログ記事データ
-kiji <- read.csv(file.choose(), row.name = 1)
-# kiji <- read.csv("Chapter05_proj/mb.csv", row.name = 1)
+kiji <- read.csv(file.choose(), row.name = 1)#mb.csvを選択
+# kiji <- read.csv("AmosWIN/Chapter05_proj/mb.csv", row.name = 1)
 
 kiji
 
 ## 主成分分析
 blog <- kiji %>% prcomp # blog <- prcomp(mail)
 
-blog %>% biplot # biplot(blog, cex = 1.2)
+blog %>% biplot (cex = 1.2) # biplot(blog, cex = 1.2)
 
 
 ## 口コミ分析
@@ -118,22 +118,23 @@ library(rvest)
 library(dplyr)
 
 # Wikiの花札のぺーじを取得。データ取得に数秒かかる
-wiki <- html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
+wiki <- read_html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
+## rvest パッケージの以前のバージョンでは html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
 hanahuda <- wiki %>% html_nodes("table") %>% .[[3]] %>% html_nodes("td") %>% html_text() 
 dim(hanahuda) <- c(6,12)
-hanahuda %>% t %>% as.table #as.table (t(hanahuda))
+hanahuda %>% t %>% as.table %>% iconv (from = "UTF-8")
 
 #なおMacを利用している場合は、以下のように実行できる（日本語文字コードの関係で、残念ながらWindowsだとうまく動作しないので注意）
-# html <- html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
-# hana <- html_table(html_nodes(html, "table")[[3]])
+# wiki <- read_html("http://ja.wikipedia.org/wiki/%E8%8A%B1%E6%9C%AD")
+# hana <- html_table(html_nodes(wiki, "table")[[3]])
 # hana
 
 
 # Code05-08
 # 口コミ分析
 kutikomi <- read.csv(file.choose(), row.name = 1)
-# Chapter05/kutikomi.csv を選択
- # kutikomi <- read.csv("Chapter05/kutikomi.csv", row.name = 1)
+# AmosWIN/Chapter05/kutikomi.csv を選択
+ # kutikomi <- read.csv("AmosWIN/Chapter05/kutikomi.csv", row.name = 1)
 kutikomi %>% head 
 
 
@@ -166,5 +167,5 @@ HE
 
 HEca <- HE %>% MASS::corresp(nf = 2)
 
-HEca %>% biplot 
+HEca %>% biplot (cex = 1.2)
 

@@ -25,22 +25,21 @@ dat2 %>% chisq.test
 # chisq.test (dat2)# こうしても同じ結果をえられる
 
 # 独立性の検定の意味
-survey <- read.csv(file.choose())# Chapter03/survey.csvを選択する
+survey <- read.csv(file.choose())# AmosMAC/Chapter03/survey.csvを選択する
 survey %>% head # head (survey) に同じ
 
 
 # 列を選んで分割表を作成
-survey  %>% select (立場, 回答6) %>% table
+table1 <- survey  %>% select (立場, 回答6) %>% table
+table1
 
 # グラフ（積み上げバープロット）を描く
 library(ggplot2)
-survey %>% ggplot(aes (x = 立場, y = 回答6, fill = 回答6 )) + geom_bar(stat="identity")
+table1 %>% as.data.frame %>% ggplot(aes (x = 立場, y = Freq, fill = 回答6 )) + geom_bar(stat="identity") + ylab("人数") #+ scale_fill_grey(start = 0.4, end = 0.8)最後のscale_fill_greyはグラフをモノクロにするオプション
 # パイプ演算子%>%を使わないで同じプロットを作成
-# ggplot(survey, aes (x = 立場, y = 回答6, fill = 回答6 )) + geom_bar(stat="identity")
+# ggplot(talbe1, aes (x = 立場, y = 回答6, fill = 回答6 )) + geom_bar(stat="identity")
 
-# 補足：別名で保存してグラフを描く方法 
-table1 <- survey  %>% select (立場, 回答6) %>% table
-   #### シンプルな棒グラフ
+# 補足：シンプルな棒グラフ
 table1 %>% plot #   plot (table1)でも同じ
 
 # カイ二乗検定
