@@ -156,13 +156,4 @@ kuti.cor %>% biplot(cex = 1.2)
 
 
 
-# コレスポンデンス分析の例
-HE <- HairEyeColor[,,2]
-
-dimnames(HE) <- list (髪 =c("黒","茶","赤","金"), 眼=c("茶","青","栗","緑"))
-HE
-
-HEca <- HE %>% MASS::corresp(nf = 2)
-
-HEca %>% biplot  (cex = 1.2)# 
 

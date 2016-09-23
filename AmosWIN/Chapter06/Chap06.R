@@ -1,11 +1,13 @@
-# vers. 1.0
+# vers. 1.1 # 2016 09 23
 ### ----- 第6章 ----- ###
 
 
 # Code06-01
 # 小太郎さんの万引被害データ
-kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"))# "Chapter06/kotaro.csv"を選択
-# kotaro <- read.csv("Chapter06/kotaro.csv", colClasses = c("numeric","factor","Date","factor","factor"))# "kotaro.csv"
+kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"),quote = NULL)
+#  Chapter06/kotaro.csvを選択する
+# kotaro <- read.csv("Chapter06/kotaro.csv", colClasses = c("numeric","factor","Date","factor","factor"))
+
 # 時系列データを扱うのに便利なパッケージをインストール
 # install.packages("xts")
 library("xts") 
@@ -70,7 +72,8 @@ kotaro.glm$coefficients %>% exp %>% round(2)
 
 ###################################
 ## R付属データでロジスティック回帰分析
-data(birthwt, package = "MASS")
+
+load ("Chapter06/birthwt.rda")# データを読み込む
 
 bw.glm <- birthwt %>% glm(low ~ age + lwt + race + smoke + ptl + ht + ui + ftv, data = .,family = binomial)
 # bw.glm <- glm(low ~ age + lwt + race + smoke + ptl + ht + ui + ftv, data = birthwt,family = binomial)
@@ -79,5 +82,3 @@ bw.glm %>% summary
 # summary (bw.glm)
 
 bw.glm$coefficients %>% exp %>%  round(2)
-
-
