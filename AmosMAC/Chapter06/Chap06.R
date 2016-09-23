@@ -1,10 +1,10 @@
-# vers. 1.0
+# vers. 1.1 # 2016 09 23
 ### ----- 第6章 ----- ###
 
 
 # Code06-01
 # 小太郎さんの万引被害データ
-kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"))
+kotaro <- read.csv(file.choose(), colClasses = c("numeric","factor","Date","factor","factor"),quote = NULL)
 #  Chapter06/kotaro.csvを選択する
 # kotaro <- read.csv("Chapter06/kotaro.csv", colClasses = c("numeric","factor","Date","factor","factor"))
 

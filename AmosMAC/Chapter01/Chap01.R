@@ -1,4 +1,4 @@
-# vers. 1.0
+# vers. 1.1 # 2016 09 23
 ### ----- 第1章 ----- ###
 
 # 左の記号をシャープ記号(#)といいますが
@@ -53,13 +53,19 @@ hist(res)
 # ggplt2を利用するために読み込む
 library(ggplot2)
 
-### 描画のためにデータを整形
-resD <- as.data.frame(table(res))
+### 描画のためにデータをデータフレームに整形
+resD <- as.data.frame(res)
+
 # 冒頭の10行だけを表示
 head (resD, n = 10)# 
 
+
 ### なお数値はランダムに生成しているので、実行結果は毎回、微妙に異なります
-ggplot(resD, aes(y = Freq, x = res)) +  geom_histogram(binwidth = 1, stat="identity", fill = "steelblue") + xlab("週の当たり個数") + ylab ("週の数") + ggtitle("ヒストグラム") 
+ggplot(resD, aes(x = res)) +  geom_histogram(binwidth = 1, 
+                                             color = "white", 
+                                             fill = "steelblue") + 
+  xlab("週の当たり個数") + ylab ("週の数") + ggtitle("ヒストグラム") 
+
 
 
 

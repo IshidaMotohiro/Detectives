@@ -1,4 +1,4 @@
-# ver1.0
+# ver1.1 # 2016 09 23
 ###----- 第5章  -----###
 ## RMeCabをインストール、ただし、事前にMeCabのインストールが必要
 ## ここ https://sites.google.com/site/rmecab/home/install  を参照のうえ、インストールする
@@ -6,7 +6,7 @@
 # install.packages("RMeCab", repos = "http://rmecab.jp/R")
 library(RMeCab)
 # 『走れメロス』を形態素解析にかけ、名詞、形容詞、動詞を抽出
-m <- NgramDF("merosu.txt", type = 1, pos = c("名詞","形容詞", "動詞"))
+m <- NgramDF("Chapter05/merosu.txt", type = 1, pos = c("名詞","形容詞", "動詞"))
 
 library(dplyr)
 nrow (m) #パイプ処理ならば m %>% nrow #
